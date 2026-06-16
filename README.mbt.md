@@ -1,5 +1,7 @@
 # mooncharts
 
+[![CI](https://github.com/pxgt/mooncharts/actions/workflows/ci.yml/badge.svg)](https://github.com/pxgt/mooncharts/actions/workflows/ci.yml)
+
 Lightweight, dependency-free **SVG charting for [MoonBit](https://www.moonbitlang.com/)**.
 Turn typed data into standalone SVG documents you can drop into a web page, a
 report, or a file — bar, line, pie/donut and scatter charts out of the box.
