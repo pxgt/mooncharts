@@ -1,0 +1,7 @@
+import {
+  "pxgt/mooncharts",
+}
+
+options(
+  "is-main": true,
+)
