@@ -94,6 +94,20 @@ moon run cmd/main > gallery.html
 # then open gallery.html in your browser
 ```
 
+## Live interactive demo
+
+`examples/interactive.html` runs mooncharts **in the browser**: the library is
+compiled to JavaScript and re-renders charts live as you switch chart types,
+drag data sliders, or toggle the dark theme. The `web/` package exposes a
+`render` function to JS via `link.js.exports`; rebuild the bundle with:
+
+```bash
+moon build --target js --release
+cp _build/js/release/build/web/web.js examples/mooncharts.js
+```
+
+Then open `examples/interactive.html` in a browser.
+
 ## License
 
 [Apache-2.0](LICENSE).
