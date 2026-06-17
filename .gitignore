@@ -4,3 +4,6 @@ target/
 target
 .mooncakes/
 .moonagent/
+
+# Dev-only static server for the local interactive preview
+examples/serve.cjs

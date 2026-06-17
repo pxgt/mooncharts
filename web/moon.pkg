@@ -1,0 +1,7 @@
+import {
+  "Xpeng/mooncharts",
+}
+
+options(
+  link: { "js": { "exports": [ "render" ], "format": "iife" } },
+)
