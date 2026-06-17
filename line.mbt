@@ -2,9 +2,9 @@
 
 ///|
 /// Render a line chart connecting a series of `(x, y)` points as a standalone
-/// SVG document string. The axes auto-fit the data; when all y-values are
-/// positive the baseline is anchored at zero. `title`, `width` and `height`
-/// are optional.
+/// SVG document string. The value axis auto-fits the data with nicely rounded
+/// gridlines; when all y-values are positive the baseline is anchored at zero.
+/// `title`, `width` and `height` are optional.
 pub fn line_chart(
   data : Array[(Double, Double)],
   title? : String = "",
@@ -23,28 +23,10 @@ pub fn line_chart(
   let (ylo_raw, yhi) = extent(ys)
   // Anchor the baseline at zero for the common all-positive case.
   let ylo = if ylo_raw > 0.0 { 0.0 } else { ylo_raw }
+  let (axis_lo, axis_hi, ticks) = nice_ticks(ylo, yhi, 5)
   let body = StringBuilder::new()
-  // Axes: left vertical and bottom horizontal.
-  body.write_string(
-    elem("line", [
-      ("x1", num(left)),
-      ("y1", num(top)),
-      ("x2", num(left)),
-      ("y2", num(top + plot_h)),
-      ("stroke", "#cccccc"),
-      ("stroke-width", "1"),
-    ]),
-  )
-  body.write_string(
-    elem("line", [
-      ("x1", num(left)),
-      ("y1", num(top + plot_h)),
-      ("x2", num(left + plot_w)),
-      ("y2", num(top + plot_h)),
-      ("stroke", "#888888"),
-      ("stroke-width", "1"),
-    ]),
-  )
+  // Gridlines and y-axis labels behind the series.
+  body.write_string(y_axis(left, top, plot_w, plot_h, axis_lo, axis_hi, ticks))
   let n = data.length()
   if n > 0 {
     // Build the polyline point string and remember pixel positions for markers.
@@ -54,7 +36,7 @@ pub fn line_chart(
     for i in 0..<n {
       let (x, y) = data[i]
       let px = scale_linear(x, xlo, xhi, left, left + plot_w)
-      let py = scale_linear(y, ylo, yhi, top + plot_h, top)
+      let py = scale_linear(y, axis_lo, axis_hi, top + plot_h, top)
       px_arr.push(px)
       py_arr.push(py)
       if i > 0 {

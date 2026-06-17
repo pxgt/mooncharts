@@ -22,25 +22,17 @@ pub fn bar_chart(
   let values = data.map(fn(d) { d.1 })
   let (_, raw_max) = extent(values)
   let max = if raw_max <= 0.0 { 1.0 } else { raw_max }
+  let (axis_lo, axis_hi, ticks) = nice_ticks(0.0, max, 5)
   let n = data.length()
   let body = StringBuilder::new()
-  // Baseline along the bottom of the plot area.
-  body.write_string(
-    elem("line", [
-      ("x1", num(left)),
-      ("y1", num(top + plot_h)),
-      ("x2", num(left + plot_w)),
-      ("y2", num(top + plot_h)),
-      ("stroke", "#888888"),
-      ("stroke-width", "1"),
-    ]),
-  )
+  // Gridlines and y-axis labels sit behind the bars.
+  body.write_string(y_axis(left, top, plot_w, plot_h, axis_lo, axis_hi, ticks))
   if n > 0 {
     let slot = plot_w / n.to_double()
     let bar_w = slot * 0.62
     for i in 0..<n {
       let (name, value) = data[i]
-      let bar_h = value / max * plot_h
+      let bar_h = value / axis_hi * plot_h
       let x = left + slot * i.to_double() + (slot - bar_w) / 2.0
       let y = top + plot_h - bar_h
       // The bar itself.
