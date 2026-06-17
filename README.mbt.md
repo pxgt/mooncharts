@@ -10,6 +10,15 @@ multi-series line and grouped bar charts, out of the box.
 Because MoonBit compiles to JS, Wasm and native, the same chart code can run in
 the browser or generate static SVG on the backend.
 
+<p>
+  <img src="examples/img-bar.svg" width="320" alt="bar chart" />
+  <img src="examples/img-area.svg" width="320" alt="area chart" />
+  <img src="examples/img-donut.svg" width="260" alt="donut chart with dark theme" />
+</p>
+
+> These images are real SVG output from the library. See `examples/interactive.html`
+> for a live, in-browser demo.
+
 ## Features
 
 - Eight chart types: bar, line, area, pie, donut, scatter, multi-series line, grouped bar
