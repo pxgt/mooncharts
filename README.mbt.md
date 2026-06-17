@@ -21,14 +21,14 @@ the browser or generate static SVG on the backend.
 ## Install
 
 ```bash
-moon add pxgt/mooncharts
+moon add Xpeng/mooncharts
 ```
 
 Then import it in your package's `moon.pkg`:
 
 ```
 import {
-  "pxgt/mooncharts",
+  "Xpeng/mooncharts",
 }
 ```
 

@@ -1,5 +1,5 @@
 import {
-  "pxgt/mooncharts",
+  "Xpeng/mooncharts",
 }
 
 options(

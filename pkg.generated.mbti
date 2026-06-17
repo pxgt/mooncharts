@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "pxgt/mooncharts"
+package "Xpeng/mooncharts"
 
 // Values
 pub fn bar_chart(Array[(String, Double)], title? : String, width? : Double, height? : Double) -> String

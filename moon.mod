@@ -9,7 +9,7 @@
 //   "moonbitlang/x@0.4.6",
 // }
 
-name = "pxgt/mooncharts"
+name = "Xpeng/mooncharts"
 
 version = "0.1.0"
 
