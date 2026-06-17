@@ -80,6 +80,13 @@ fn main {
       width=520.0,
       height=300.0,
     ),
+    @mooncharts.bar_chart(
+      [("Q1", 88.0), ("Q2", 122.0), ("Q3", 105.0), ("Q4", 153.0)],
+      title="Quarterly Revenue (dark theme)",
+      width=420.0,
+      height=300.0,
+      theme=@mooncharts.Theme::dark(),
+    ),
   ]
   let sb = StringBuilder::new()
   sb.write_string(

@@ -3,12 +3,13 @@
 ///|
 /// Render an area chart for a series of `(x, y)` points as a standalone SVG
 /// document string. The region between the line and the baseline is filled with
-/// a translucent color. `title`, `width` and `height` are optional.
+/// a translucent color. `title`, `width`, `height` and `theme` are optional.
 pub fn area_chart(
   data : Array[(Double, Double)],
   title? : String = "",
   width? : Double = 480.0,
   height? : Double = 320.0,
+  theme? : Theme = Theme::light(),
 ) -> String {
   let left = 48.0
   let right = 16.0
@@ -24,9 +25,13 @@ pub fn area_chart(
   let (axis_lo, axis_hi, ticks) = nice_ticks(ylo, yhi, 5)
   let baseline = top + plot_h
   let body = StringBuilder::new()
-  body.write_string(y_axis(left, top, plot_w, plot_h, axis_lo, axis_hi, ticks))
+  body.write_string(background_rect(theme, width, height))
+  body.write_string(
+    y_axis(theme, left, top, plot_w, plot_h, axis_lo, axis_hi, ticks),
+  )
   let n = data.length()
   if n > 0 {
+    let color = theme.color_at(0)
     let line_pts = StringBuilder::new()
     let px_arr : Array[Double] = []
     let py_arr : Array[Double] = []
@@ -49,16 +54,15 @@ pub fn area_chart(
     body.write_string(
       elem("polygon", [
         ("points", poly.to_string()),
-        ("fill", color_at(0)),
+        ("fill", color),
         ("fill-opacity", "0.18"),
       ]),
     )
-    // The line itself on top of the fill.
     body.write_string(
       elem("polyline", [
         ("points", line_pts.to_string()),
         ("fill", "none"),
-        ("stroke", color_at(0)),
+        ("stroke", color),
         ("stroke-width", "2"),
         ("stroke-linejoin", "round"),
         ("stroke-linecap", "round"),
@@ -70,14 +74,14 @@ pub fn area_chart(
           ("cx", num(px_arr[i])),
           ("cy", num(py_arr[i])),
           ("r", "3"),
-          ("fill", color_at(0)),
+          ("fill", color),
         ]),
       )
     }
   }
   if title != "" {
     body.write_string(
-      label(width / 2.0, 24.0, title, size=16, weight="bold", fill="#222222"),
+      label(width / 2.0, 24.0, title, size=16, weight="bold", fill=theme.title),
     )
   }
   document(width, height, body.to_string())

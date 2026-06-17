@@ -4,13 +4,14 @@
 /// Render a scatter plot of `(x, y)` points as a standalone SVG document
 /// string. The y value axis gets nicely rounded gridlines; the x domain is
 /// padded slightly so points never sit on the frame. `title`, `width`,
-/// `height` and the point `radius` are optional.
+/// `height`, the point `radius` and `theme` are optional.
 pub fn scatter_chart(
   data : Array[(Double, Double)],
   title? : String = "",
   width? : Double = 480.0,
   height? : Double = 320.0,
   radius? : Double = 4.0,
+  theme? : Theme = Theme::light(),
 ) -> String {
   let left = 48.0
   let right = 16.0
@@ -26,8 +27,11 @@ pub fn scatter_chart(
   let xpad = (xhi - xlo) * 0.05
   let (axis_lo, axis_hi, ticks) = nice_ticks(ylo, yhi, 5)
   let body = StringBuilder::new()
-  // Gridlines and y-axis labels behind the points.
-  body.write_string(y_axis(left, top, plot_w, plot_h, axis_lo, axis_hi, ticks))
+  body.write_string(background_rect(theme, width, height))
+  body.write_string(
+    y_axis(theme, left, top, plot_w, plot_h, axis_lo, axis_hi, ticks),
+  )
+  let color = theme.color_at(0)
   for i in 0..<data.length() {
     let (x, y) = data[i]
     let px = scale_linear(x, xlo - xpad, xhi + xpad, left, left + plot_w)
@@ -37,14 +41,14 @@ pub fn scatter_chart(
         ("cx", num(px)),
         ("cy", num(py)),
         ("r", num(radius)),
-        ("fill", color_at(0)),
+        ("fill", color),
         ("fill-opacity", "0.7"),
       ]),
     )
   }
   if title != "" {
     body.write_string(
-      label(width / 2.0, 24.0, title, size=16, weight="bold", fill="#222222"),
+      label(width / 2.0, 24.0, title, size=16, weight="bold", fill=theme.title),
     )
   }
   document(width, height, body.to_string())

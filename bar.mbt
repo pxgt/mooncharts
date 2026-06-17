@@ -4,13 +4,14 @@
 /// Render a vertical bar chart as a standalone SVG document string.
 ///
 /// `data` is a list of `(label, value)` pairs; values are expected to be
-/// non-negative and the tallest bar fills the plot area. `title`, `width` and
-/// `height` are optional.
+/// non-negative and the tallest bar fills the plot area. `title`, `width`,
+/// `height` and `theme` are optional.
 pub fn bar_chart(
   data : Array[(String, Double)],
   title? : String = "",
   width? : Double = 480.0,
   height? : Double = 320.0,
+  theme? : Theme = Theme::light(),
 ) -> String {
   let left = 48.0
   let right = 16.0
@@ -25,8 +26,11 @@ pub fn bar_chart(
   let (axis_lo, axis_hi, ticks) = nice_ticks(0.0, max, 5)
   let n = data.length()
   let body = StringBuilder::new()
+  body.write_string(background_rect(theme, width, height))
   // Gridlines and y-axis labels sit behind the bars.
-  body.write_string(y_axis(left, top, plot_w, plot_h, axis_lo, axis_hi, ticks))
+  body.write_string(
+    y_axis(theme, left, top, plot_w, plot_h, axis_lo, axis_hi, ticks),
+  )
   if n > 0 {
     let slot = plot_w / n.to_double()
     let bar_w = slot * 0.62
@@ -42,19 +46,23 @@ pub fn bar_chart(
           ("y", num(y)),
           ("width", num(bar_w)),
           ("height", num(bar_h)),
-          ("fill", color_at(i)),
+          ("fill", theme.color_at(i)),
           ("rx", "2"),
         ]),
       )
       // Value printed just above the bar.
-      body.write_string(label(x + bar_w / 2.0, y - 6.0, num(value)))
+      body.write_string(
+        label(x + bar_w / 2.0, y - 6.0, num(value), fill=theme.text),
+      )
       // Category label below the baseline.
-      body.write_string(label(x + bar_w / 2.0, top + plot_h + 16.0, name))
+      body.write_string(
+        label(x + bar_w / 2.0, top + plot_h + 16.0, name, fill=theme.text),
+      )
     }
   }
   if title != "" {
     body.write_string(
-      label(width / 2.0, 24.0, title, size=16, weight="bold", fill="#222222"),
+      label(width / 2.0, 24.0, title, size=16, weight="bold", fill=theme.title),
     )
   }
   document(width, height, body.to_string())

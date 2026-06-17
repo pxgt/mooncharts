@@ -121,6 +121,7 @@ pub fn pie_chart(
   width? : Double = 380.0,
   height? : Double = 300.0,
   donut? : Double = 0.0,
+  theme? : Theme = Theme::light(),
 ) -> String {
   let top = if title == "" { 16.0 } else { 40.0 }
   let mut total = 0.0
@@ -141,6 +142,7 @@ pub fn pie_chart(
   let cx = 16.0 + r
   let inner = if donut > 0.0 { r * donut } else { 0.0 }
   let body = StringBuilder::new()
+  body.write_string(background_rect(theme, width, height))
   let mut angle = -@math.PI / 2.0
   let n = data.length()
   let item_h = 20.0
@@ -151,7 +153,7 @@ pub fn pie_chart(
     if value > 0.0 {
       let a0 = angle
       let a1 = angle + value / total * @math.PI * 2.0
-      emit_slice(body, cx, cy, r, inner, a0, a1, color_at(i))
+      emit_slice(body, cx, cy, r, inner, a0, a1, theme.color_at(i))
       angle = a1
     }
     // Legend swatch and label for every item.
@@ -161,7 +163,7 @@ pub fn pie_chart(
         ("y", num(legend_y - 9.0)),
         ("width", "12"),
         ("height", "12"),
-        ("fill", color_at(i)),
+        ("fill", theme.color_at(i)),
         ("rx", "2"),
       ]),
     )
@@ -171,13 +173,14 @@ pub fn pie_chart(
         legend_y,
         name + " (" + num(value) + ")",
         anchor="start",
+        fill=theme.text,
       ),
     )
     legend_y += item_h
   }
   if title != "" {
     body.write_string(
-      label(width / 2.0, 24.0, title, size=16, weight="bold", fill="#222222"),
+      label(width / 2.0, 24.0, title, size=16, weight="bold", fill=theme.title),
     )
   }
   document(width, height, body.to_string())

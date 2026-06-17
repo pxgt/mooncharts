@@ -1,11 +1,12 @@
-// Value-axis rendering shared by the bar, line and scatter charts: horizontal
-// gridlines plus right-aligned y-axis tick labels.
+// Value-axis rendering shared by the bar, line, area and scatter charts:
+// horizontal gridlines plus right-aligned y-axis tick labels.
 
 ///|
 /// Render horizontal gridlines and y-axis tick labels for a plot area whose
 /// value domain is `[axis_lo, axis_hi]` with the given `ticks`. The baseline
-/// (the tick at the bottom of the domain) is drawn slightly darker.
+/// (the tick at the bottom of the domain) is drawn in the theme's axis color.
 fn y_axis(
+  theme : Theme,
   left : Double,
   top : Double,
   plot_w : Double,
@@ -17,7 +18,7 @@ fn y_axis(
   let body = StringBuilder::new()
   for t in ticks {
     let y = scale_linear(t, axis_lo, axis_hi, top + plot_h, top)
-    let stroke = if t == axis_lo { "#bbbbbb" } else { "#eeeeee" }
+    let stroke = if t == axis_lo { theme.axis } else { theme.grid }
     body.write_string(
       elem("line", [
         ("x1", num(left)),
@@ -29,7 +30,7 @@ fn y_axis(
       ]),
     )
     body.write_string(
-      label(left - 6.0, y + 4.0, num(t), anchor="end", fill="#888888"),
+      label(left - 6.0, y + 4.0, num(t), anchor="end", fill=theme.axis),
     )
   }
   body.to_string()
