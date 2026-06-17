@@ -67,6 +67,19 @@ fn main {
       width=420.0,
       height=300.0,
     ),
+    @mooncharts.area_chart(
+      [
+        (1.0, 30.0),
+        (2.0, 45.0),
+        (3.0, 38.0),
+        (4.0, 62.0),
+        (5.0, 70.0),
+        (6.0, 85.0),
+      ],
+      title="Daily Signups",
+      width=520.0,
+      height=300.0,
+    ),
   ]
   let sb = StringBuilder::new()
   sb.write_string(

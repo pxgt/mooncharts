@@ -68,6 +68,16 @@ test "pie_chart renders one slice per positive value plus legend" {
 }
 
 ///|
+test "area_chart fills the region under the line" {
+  inspect(
+    @mooncharts.area_chart([(0.0, 0.0), (1.0, 2.0)], width=120.0, height=90.0),
+    content=(
+      #|<svg xmlns="http://www.w3.org/2000/svg" width="120" height="90" viewBox="0 0 120 90"><line x1="48" y1="50" x2="104" y2="50" stroke="#bbbbbb" stroke-width="1" /><text x="42" y="54" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#888888">0</text><line x1="48" y1="41.5" x2="104" y2="41.5" stroke="#eeeeee" stroke-width="1" /><text x="42" y="45.5" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#888888">0.5</text><line x1="48" y1="33" x2="104" y2="33" stroke="#eeeeee" stroke-width="1" /><text x="42" y="37" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#888888">1</text><line x1="48" y1="24.5" x2="104" y2="24.5" stroke="#eeeeee" stroke-width="1" /><text x="42" y="28.5" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#888888">1.5</text><line x1="48" y1="16" x2="104" y2="16" stroke="#eeeeee" stroke-width="1" /><text x="42" y="20" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#888888">2</text><polygon points="48,50 48,50 104,16 104,50" fill="#4e79a7" fill-opacity="0.18" /><polyline points="48,50 104,16" fill="none" stroke="#4e79a7" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><circle cx="48" cy="50" r="3" fill="#4e79a7" /><circle cx="104" cy="16" r="3" fill="#4e79a7" /></svg>
+    ),
+  )
+}
+
+///|
 test "scatter_chart renders one circle per point" {
   inspect(
     @mooncharts.scatter_chart(
