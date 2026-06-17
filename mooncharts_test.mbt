@@ -109,3 +109,26 @@ test "with_palette overrides the series colors" {
   inspect(svg.contains("#ff0000"), content="true")
   inspect(svg.contains("#00ff00"), content="true")
 }
+
+///|
+test "line_chart_multi draws one colored series per entry plus a legend" {
+  let svg = @mooncharts.line_chart_multi([
+    ("A", [(0.0, 1.0), (1.0, 2.0)]),
+    ("B", [(0.0, 2.0), (1.0, 1.0)]),
+  ])
+  inspect(svg.has_prefix("<svg"), content="true")
+  // Two distinct series colors from the palette.
+  inspect(svg.contains("#4e79a7"), content="true")
+  inspect(svg.contains("#f28e2b"), content="true")
+}
+
+///|
+test "bar_chart_grouped renders side-by-side bars for each series" {
+  let svg = @mooncharts.bar_chart_grouped(["Q1", "Q2"], [
+    ("2024", [10.0, 20.0]),
+    ("2025", [15.0, 25.0]),
+  ])
+  inspect(svg.has_prefix("<svg"), content="true")
+  inspect(svg.contains("#4e79a7"), content="true")
+  inspect(svg.contains("#f28e2b"), content="true")
+}

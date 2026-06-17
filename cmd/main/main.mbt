@@ -87,6 +87,31 @@ fn main {
       height=300.0,
       theme=@mooncharts.Theme::dark(),
     ),
+    @mooncharts.line_chart_multi(
+      [
+        (
+          "Product A",
+          [(1.0, 20.0), (2.0, 35.0), (3.0, 30.0), (4.0, 48.0), (5.0, 55.0)],
+        ),
+        (
+          "Product B",
+          [(1.0, 12.0), (2.0, 18.0), (3.0, 28.0), (4.0, 26.0), (5.0, 40.0)],
+        ),
+      ],
+      title="Revenue by Product ($k)",
+      width=520.0,
+      height=320.0,
+    ),
+    @mooncharts.bar_chart_grouped(
+      ["Q1", "Q2", "Q3", "Q4"],
+      [
+        ("2024", [88.0, 122.0, 105.0, 153.0]),
+        ("2025", [110.0, 140.0, 130.0, 175.0]),
+      ],
+      title="Quarterly Revenue: 2024 vs 2025",
+      width=520.0,
+      height=320.0,
+    ),
   ]
   let sb = StringBuilder::new()
   sb.write_string(

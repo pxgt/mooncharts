@@ -6,6 +6,8 @@ pub fn area_chart(Array[(Double, Double)], title? : String, width? : Double, hei
 
 pub fn bar_chart(Array[(String, Double)], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
+pub fn bar_chart_grouped(Array[String], Array[(String, Array[Double])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+
 pub fn container(String, Array[(String, String)], String) -> String
 
 pub fn document(Double, Double, String) -> String
@@ -15,6 +17,8 @@ pub fn elem(String, Array[(String, String)]) -> String
 pub fn escape(String) -> String
 
 pub fn line_chart(Array[(Double, Double)], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+
+pub fn line_chart_multi(Array[(String, Array[(Double, Double)])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
 pub fn num(Double) -> String
 
