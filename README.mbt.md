@@ -21,7 +21,7 @@ the browser or generate static SVG on the backend.
 
 ## Features
 
-- Eight chart types: bar, line, area, pie, donut, scatter, multi-series line, grouped bar
+- Ten chart types: bar, line, area, pie, donut, scatter, multi-series line, grouped & stacked bar, radar
 - Nicely rounded value axes with gridlines (Heckbert "nice numbers")
 - Light / dark themes and custom color palettes
 - Reusable SVG primitives — compose your own shapes
@@ -71,6 +71,8 @@ Write the returned string to a `.svg` file, or embed it directly in an HTML page
 | `scatter_chart` | `Array[(Double, Double)]` | XY scatter, configurable point `radius` |
 | `line_chart_multi` | `Array[(String, Array[(Double, Double)])]` | several named line series + legend |
 | `bar_chart_grouped` | `Array[String]`, `Array[(String, Array[Double])]` | grouped bars per category + legend |
+| `bar_chart_stacked` | `Array[String]`, `Array[(String, Array[Double])]` | stacked bars per category + legend |
+| `radar_chart` | `Array[String]`, `Array[(String, Array[Double])]` | spider chart, one filled polygon per series |
 
 All chart functions share optional `title?`, `width?`, `height?` and `theme?` parameters.
 
