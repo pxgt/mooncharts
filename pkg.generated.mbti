@@ -8,6 +8,8 @@ pub fn bar_chart(Array[(String, Double)], title? : String, width? : Double, heig
 
 pub fn bar_chart_grouped(Array[String], Array[(String, Array[Double])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
+pub fn bar_chart_stacked(Array[String], Array[(String, Array[Double])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+
 pub fn container(String, Array[(String, String)], String) -> String
 
 pub fn document(Double, Double, String) -> String
@@ -23,6 +25,8 @@ pub fn line_chart_multi(Array[(String, Array[(Double, Double)])], title? : Strin
 pub fn num(Double) -> String
 
 pub fn pie_chart(Array[(String, Double)], title? : String, width? : Double, height? : Double, donut? : Double, theme? : Theme) -> String
+
+pub fn radar_chart(Array[String], Array[(String, Array[Double])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
 pub fn scatter_chart(Array[(Double, Double)], title? : String, width? : Double, height? : Double, radius? : Double, theme? : Theme) -> String
 

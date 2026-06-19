@@ -112,6 +112,27 @@ fn main {
       width=520.0,
       height=320.0,
     ),
+    @mooncharts.bar_chart_stacked(
+      ["Q1", "Q2", "Q3", "Q4"],
+      [
+        ("Online", [40.0, 55.0, 48.0, 70.0]),
+        ("Retail", [30.0, 35.0, 40.0, 50.0]),
+        ("Wholesale", [18.0, 22.0, 17.0, 33.0]),
+      ],
+      title="Revenue by Channel (stacked)",
+      width=520.0,
+      height=320.0,
+    ),
+    @mooncharts.radar_chart(
+      ["Speed", "Power", "Range", "Defense", "Magic", "Luck"],
+      [
+        ("Warrior", [9.0, 8.0, 4.0, 9.0, 2.0, 5.0]),
+        ("Mage", [4.0, 6.0, 9.0, 3.0, 10.0, 6.0]),
+      ],
+      title="Character Stats",
+      width=460.0,
+      height=380.0,
+    ),
   ]
   let sb = StringBuilder::new()
   sb.write_string(

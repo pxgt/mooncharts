@@ -132,3 +132,24 @@ test "bar_chart_grouped renders side-by-side bars for each series" {
   inspect(svg.contains("#4e79a7"), content="true")
   inspect(svg.contains("#f28e2b"), content="true")
 }
+
+///|
+test "bar_chart_stacked stacks series into one bar per category" {
+  let svg = @mooncharts.bar_chart_stacked(["Q1", "Q2"], [
+    ("A", [10.0, 20.0]),
+    ("B", [5.0, 8.0]),
+  ])
+  inspect(svg.has_prefix("<svg"), content="true")
+  inspect(svg.contains("#4e79a7"), content="true")
+  inspect(svg.contains("#f28e2b"), content="true")
+}
+
+///|
+test "radar_chart draws a polygon per series over labeled spokes" {
+  let svg = @mooncharts.radar_chart(["Speed", "Power", "Range", "Defense"], [
+    ("Hero", [8.0, 6.0, 7.0, 5.0]),
+  ])
+  inspect(svg.has_prefix("<svg"), content="true")
+  inspect(svg.contains("Speed"), content="true")
+  inspect(svg.contains("<polygon"), content="true")
+}
