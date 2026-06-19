@@ -121,6 +121,12 @@ cp _build/js/release/build/web/web.js examples/mooncharts.js
 
 Then open `examples/interactive.html` in a browser.
 
+## Project write-up
+
+[`docs/devlog.md`](docs/devlog.md) is a development log covering the architecture,
+the design decisions (SVG primitives, nice-number ticks, theming, multi-series),
+what MoonBit was like to use, and the AI-assisted workflow behind the project.
+
 ## License
 
 [Apache-2.0](LICENSE).
