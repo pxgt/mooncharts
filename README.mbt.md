@@ -107,6 +107,8 @@ moon run cmd/main > gallery.html
 
 ## Live interactive demo
 
+**▶ Try it live: <https://pxgt.github.io/mooncharts/>**
+
 `examples/interactive.html` runs mooncharts **in the browser**: the library is
 compiled to JavaScript and re-renders charts live as you switch chart types,
 drag data sliders, or toggle the dark theme. The `web/` package exposes a
