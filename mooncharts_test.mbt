@@ -185,6 +185,46 @@ test "bar_chart_horizontal lays bars out sideways with left labels" {
 }
 
 ///|
+test "quartiles handle even, odd and tiny inputs" {
+  // Even count: halves split cleanly.
+  let (q1, m, q3) = @mooncharts.quartiles([
+    1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,
+  ])
+  inspect(q1, content="2.5")
+  inspect(m, content="4.5")
+  inspect(q3, content="6.5")
+  // Single element: everything collapses onto it.
+  let (a, b, c) = @mooncharts.quartiles([7.0])
+  inspect((a, b, c) == (7.0, 7.0, 7.0), content="true")
+  // Empty input degrades to zeros.
+  let (x, y, z) = @mooncharts.quartiles([])
+  inspect((x, y, z) == (0.0, 0.0, 0.0), content="true")
+}
+
+///|
+test "box_plot draws a box with whiskers and flags outliers" {
+  let svg = @mooncharts.box_plot([
+    ("A", [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 30.0]),
+  ])
+  inspect(svg.has_prefix("<svg"), content="true")
+  inspect(svg.contains("<rect"), content="true")
+  // 30.0 sits far beyond 1.5*IQR, so an outlier dot is drawn.
+  inspect(svg.contains("<circle"), content="true")
+}
+
+///|
+test "area_chart_stacked accumulates layers with a legend" {
+  let svg = @mooncharts.area_chart_stacked([1.0, 2.0, 3.0], [
+    ("Low", [10.0, 12.0, 14.0]),
+    ("High", [5.0, 8.0, 6.0]),
+  ])
+  inspect(svg.has_prefix("<svg"), content="true")
+  inspect(svg.contains("<polygon"), content="true")
+  inspect(svg.contains("Low"), content="true")
+  inspect(svg.contains("High"), content="true")
+}
+
+///|
 test "radar_chart draws a polygon per series over labeled spokes" {
   let svg = @mooncharts.radar_chart(["Speed", "Power", "Range", "Defense"], [
     ("Hero", [8.0, 6.0, 7.0, 5.0]),
