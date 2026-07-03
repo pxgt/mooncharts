@@ -88,3 +88,122 @@ pub fn area_chart(
   }
   document(width, height, body.to_string())
 }
+
+///|
+/// Render a stacked area chart as a standalone SVG document string: series
+/// values at shared `xs` positions are accumulated so each layer sits on top
+/// of the one below, with a legend. `series` is a list of `(name, values)`
+/// where `values[i]` pairs with `xs[i]`. `title`, `width`, `height` and
+/// `theme` are optional.
+pub fn area_chart_stacked(
+  xs : Array[Double],
+  series : Array[(String, Array[Double])],
+  title? : String = "",
+  width? : Double = 520.0,
+  height? : Double = 340.0,
+  theme? : Theme = Theme::light(),
+) -> String {
+  let left = 48.0
+  let right = 16.0
+  let title_h = if title == "" { 8.0 } else { 30.0 }
+  let legend_h = 22.0
+  let top = title_h + legend_h
+  let bottom = 40.0
+  let plot_w = width - left - right
+  let plot_h = height - top - bottom
+  let n = xs.length()
+  let n_ser = series.length()
+  // The tallest stacked total sets the y scale.
+  let mut max_total = 0.0
+  for i in 0..<n {
+    let mut total = 0.0
+    for s in 0..<n_ser {
+      let vals = series[s].1
+      if i < vals.length() {
+        total += vals[i]
+      }
+    }
+    if total > max_total {
+      max_total = total
+    }
+  }
+  let max_total = if max_total <= 0.0 { 1.0 } else { max_total }
+  let (axis_lo, axis_hi, ticks) = nice_ticks(0.0, max_total, 5)
+  let (xlo_raw, xhi_raw) = extent(xs)
+  let (xlo, xhi, x_ticks) = nice_ticks(xlo_raw, xhi_raw, 6)
+  let body = StringBuilder::new()
+  body.write_string(background_rect(theme, width, height))
+  body.write_string(
+    y_axis(theme, left, top, plot_w, plot_h, axis_lo, axis_hi, ticks),
+  )
+  body.write_string(x_axis(theme, left, top, plot_w, plot_h, xlo, xhi, x_ticks))
+  if n > 0 && n_ser > 0 {
+    let px = fn(x : Double) -> Double {
+      scale_linear(x, xlo, xhi, left, left + plot_w)
+    }
+    let py = fn(v : Double) -> Double {
+      scale_linear(v, axis_lo, axis_hi, top + plot_h, top)
+    }
+    // Running top of the layers already drawn.
+    let prev : Array[Double] = []
+    for _i in 0..<n {
+      prev.push(0.0)
+    }
+    for s in 0..<n_ser {
+      let vals = series[s].1
+      let cur : Array[Double] = []
+      for i in 0..<n {
+        let v = if i < vals.length() { vals[i] } else { 0.0 }
+        cur.push(prev[i] + v)
+      }
+      let color = theme.color_at(s)
+      // Band polygon: this layer's top forward, the previous top backward.
+      let poly = StringBuilder::new()
+      let line_pts = StringBuilder::new()
+      for i in 0..<n {
+        if i > 0 {
+          poly.write_string(" ")
+          line_pts.write_string(" ")
+        }
+        let pt = num(px(xs[i])) + "," + num(py(cur[i]))
+        poly.write_string(pt)
+        line_pts.write_string(pt)
+      }
+      for i = n - 1; i >= 0; i = i - 1 {
+        poly.write_string(" " + num(px(xs[i])) + "," + num(py(prev[i])))
+      }
+      body.write_string(
+        elem("polygon", [
+          ("points", poly.to_string()),
+          ("fill", color),
+          ("fill-opacity", "0.4"),
+        ]),
+      )
+      // Crisp line along this layer's top edge.
+      body.write_string(
+        elem("polyline", [
+          ("points", line_pts.to_string()),
+          ("fill", "none"),
+          ("stroke", color),
+          ("stroke-width", "1.5"),
+        ]),
+      )
+      for i in 0..<n {
+        prev[i] = cur[i]
+      }
+    }
+  }
+  let legend_items : Array[(String, String)] = []
+  for s in 0..<n_ser {
+    legend_items.push((series[s].0, theme.color_at(s)))
+  }
+  body.write_string(
+    legend_horizontal(legend_items, width / 2.0, title_h + 14.0, theme.text),
+  )
+  if title != "" {
+    body.write_string(
+      label(width / 2.0, 20.0, title, size=16, weight="bold", fill=theme.title),
+    )
+  }
+  document(width, height, body.to_string())
+}
