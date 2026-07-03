@@ -53,6 +53,22 @@ pub fn render(
     "stacked" =>
       @mooncharts.bar_chart_stacked(labels, two, theme~, width=w, height=h)
     "radar" => @mooncharts.radar_chart(labels, two, theme~, width=w, height=h)
+    "hbar" => @mooncharts.bar_chart_horizontal(data, theme~, width=w, height=h)
+    "heatmap" => {
+      // Fold the six slider values into a 2x3 matrix.
+      let m : Array[Array[Double]] = [[], []]
+      for i in 0..<values.length() {
+        m[i % 2].push(values[i])
+      }
+      @mooncharts.heatmap(
+        ["Row 1", "Row 2"],
+        ["Col 1", "Col 2", "Col 3"],
+        m,
+        theme~,
+        width=w,
+        height=h,
+      )
+    }
     _ => @mooncharts.bar_chart(data, theme~, width=w, height=h)
   }
 }

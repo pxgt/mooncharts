@@ -133,6 +133,40 @@ fn main {
       width=460.0,
       height=380.0,
     ),
+    @mooncharts.histogram(
+      [
+        4.2, 4.8, 5.1, 5.3, 5.5, 5.6, 5.8, 5.9, 6.0, 6.1, 6.1, 6.2, 6.3, 6.4, 6.6,
+        6.8, 7.0, 7.1, 7.4, 7.9, 8.3, 8.8,
+      ],
+      bins=8,
+      title="Response Time Distribution (ms)",
+      width=520.0,
+      height=300.0,
+    ),
+    @mooncharts.heatmap(
+      ["Mon", "Wed", "Fri"],
+      ["9am", "12pm", "3pm", "6pm"],
+      [
+        [12.0, 45.0, 38.0, 20.0],
+        [25.0, 62.0, 54.0, 31.0],
+        [18.0, 48.0, 70.0, 42.0],
+      ],
+      title="Traffic by Hour",
+      width=460.0,
+      height=300.0,
+    ),
+    @mooncharts.bar_chart_horizontal(
+      [
+        ("Rust", 88.0),
+        ("MoonBit", 82.0),
+        ("Go", 75.0),
+        ("TypeScript", 71.0),
+        ("Python", 66.0),
+      ],
+      title="Language Satisfaction (%)",
+      width=460.0,
+      height=300.0,
+    ),
   ]
   let sb = StringBuilder::new()
   sb.write_string(
