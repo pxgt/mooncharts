@@ -48,11 +48,19 @@ test "bar_chart renders one bar with baseline and labels" {
 }
 
 ///|
+test "bar_chart draws negative values downward from the zero line" {
+  let svg = @mooncharts.bar_chart([("up", 30.0), ("down", -20.0)])
+  inspect(svg.has_prefix("<svg"), content="true")
+  // Axis includes a negative tick label.
+  inspect(svg.contains(">-20<"), content="true")
+}
+
+///|
 test "line_chart renders a polyline through its points" {
   inspect(
     @mooncharts.line_chart([(0.0, 0.0), (1.0, 2.0)], width=120.0, height=90.0),
     content=(
-      #|<svg xmlns="http://www.w3.org/2000/svg" width="120" height="90" viewBox="0 0 120 90"><line x1="48" y1="50" x2="104" y2="50" stroke="#999999" stroke-width="1" /><text x="42" y="54" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0</text><line x1="48" y1="41.5" x2="104" y2="41.5" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="45.5" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.5</text><line x1="48" y1="33" x2="104" y2="33" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="37" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1</text><line x1="48" y1="24.5" x2="104" y2="24.5" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="28.5" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1.5</text><line x1="48" y1="16" x2="104" y2="16" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="20" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">2</text><polyline points="48,50 104,16" fill="none" stroke="#4e79a7" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><circle cx="48" cy="50" r="3" fill="#4e79a7" /><circle cx="104" cy="16" r="3" fill="#4e79a7" /></svg>
+      #|<svg xmlns="http://www.w3.org/2000/svg" width="120" height="90" viewBox="0 0 120 90"><line x1="48" y1="50" x2="104" y2="50" stroke="#999999" stroke-width="1" /><text x="42" y="54" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0</text><line x1="48" y1="41.5" x2="104" y2="41.5" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="45.5" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.5</text><line x1="48" y1="33" x2="104" y2="33" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="37" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1</text><line x1="48" y1="24.5" x2="104" y2="24.5" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="28.5" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1.5</text><line x1="48" y1="16" x2="104" y2="16" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="20" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">2</text><text x="48" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0</text><text x="59.2" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.2</text><text x="70.4" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.4</text><text x="81.6" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.6</text><text x="92.8" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.8</text><text x="104" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1</text><polyline points="48,50 104,16" fill="none" stroke="#4e79a7" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><circle cx="48" cy="50" r="3" fill="#4e79a7" /><circle cx="104" cy="16" r="3" fill="#4e79a7" /></svg>
     ),
   )
 }
@@ -72,7 +80,7 @@ test "area_chart fills the region under the line" {
   inspect(
     @mooncharts.area_chart([(0.0, 0.0), (1.0, 2.0)], width=120.0, height=90.0),
     content=(
-      #|<svg xmlns="http://www.w3.org/2000/svg" width="120" height="90" viewBox="0 0 120 90"><line x1="48" y1="50" x2="104" y2="50" stroke="#999999" stroke-width="1" /><text x="42" y="54" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0</text><line x1="48" y1="41.5" x2="104" y2="41.5" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="45.5" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.5</text><line x1="48" y1="33" x2="104" y2="33" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="37" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1</text><line x1="48" y1="24.5" x2="104" y2="24.5" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="28.5" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1.5</text><line x1="48" y1="16" x2="104" y2="16" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="20" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">2</text><polygon points="48,50 48,50 104,16 104,50" fill="#4e79a7" fill-opacity="0.18" /><polyline points="48,50 104,16" fill="none" stroke="#4e79a7" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><circle cx="48" cy="50" r="3" fill="#4e79a7" /><circle cx="104" cy="16" r="3" fill="#4e79a7" /></svg>
+      #|<svg xmlns="http://www.w3.org/2000/svg" width="120" height="90" viewBox="0 0 120 90"><line x1="48" y1="50" x2="104" y2="50" stroke="#999999" stroke-width="1" /><text x="42" y="54" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0</text><line x1="48" y1="41.5" x2="104" y2="41.5" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="45.5" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.5</text><line x1="48" y1="33" x2="104" y2="33" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="37" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1</text><line x1="48" y1="24.5" x2="104" y2="24.5" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="28.5" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1.5</text><line x1="48" y1="16" x2="104" y2="16" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="20" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">2</text><text x="48" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0</text><text x="59.2" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.2</text><text x="70.4" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.4</text><text x="81.6" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.6</text><text x="92.8" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.8</text><text x="104" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1</text><polygon points="48,50 48,50 104,16 104,50" fill="#4e79a7" fill-opacity="0.18" /><polyline points="48,50 104,16" fill="none" stroke="#4e79a7" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /><circle cx="48" cy="50" r="3" fill="#4e79a7" /><circle cx="104" cy="16" r="3" fill="#4e79a7" /></svg>
     ),
   )
 }
@@ -86,7 +94,7 @@ test "scatter_chart renders one circle per point" {
       height=90.0,
     ),
     content=(
-      #|<svg xmlns="http://www.w3.org/2000/svg" width="120" height="90" viewBox="0 0 120 90"><line x1="48" y1="50" x2="104" y2="50" stroke="#999999" stroke-width="1" /><text x="42" y="54" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0</text><line x1="48" y1="43.2" x2="104" y2="43.2" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="47.2" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.2</text><line x1="48" y1="36.4" x2="104" y2="36.4" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="40.4" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.4</text><line x1="48" y1="29.6" x2="104" y2="29.6" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="33.6" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.6</text><line x1="48" y1="22.8" x2="104" y2="22.8" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="26.8" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.8</text><line x1="48" y1="16" x2="104" y2="16" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="20" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1</text><circle cx="50.55" cy="50" r="4" fill="#4e79a7" fill-opacity="0.7" /><circle cx="101.45" cy="16" r="4" fill="#4e79a7" fill-opacity="0.7" /></svg>
+      #|<svg xmlns="http://www.w3.org/2000/svg" width="120" height="90" viewBox="0 0 120 90"><line x1="48" y1="50" x2="104" y2="50" stroke="#999999" stroke-width="1" /><text x="42" y="54" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0</text><line x1="48" y1="43.2" x2="104" y2="43.2" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="47.2" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.2</text><line x1="48" y1="36.4" x2="104" y2="36.4" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="40.4" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.4</text><line x1="48" y1="29.6" x2="104" y2="29.6" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="33.6" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.6</text><line x1="48" y1="22.8" x2="104" y2="22.8" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="26.8" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.8</text><line x1="48" y1="16" x2="104" y2="16" stroke="#e6e6e6" stroke-width="1" /><text x="42" y="20" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1</text><text x="48" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0</text><text x="59.2" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.2</text><text x="70.4" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.4</text><text x="81.6" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.6</text><text x="92.8" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">0.8</text><text x="104" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="normal" fill="#999999">1</text><circle cx="48" cy="50" r="4" fill="#4e79a7" fill-opacity="0.7" /><circle cx="104" cy="16" r="4" fill="#4e79a7" fill-opacity="0.7" /></svg>
     ),
   )
 }
@@ -142,6 +150,38 @@ test "bar_chart_stacked stacks series into one bar per category" {
   inspect(svg.has_prefix("<svg"), content="true")
   inspect(svg.contains("#4e79a7"), content="true")
   inspect(svg.contains("#f28e2b"), content="true")
+}
+
+///|
+test "histogram bins samples and draws flush bars" {
+  let svg = @mooncharts.histogram(
+    [1.0, 1.2, 1.4, 2.0, 2.1, 2.2, 2.3, 3.5, 3.6, 4.8],
+    bins=5,
+  )
+  inspect(svg.has_prefix("<svg"), content="true")
+  inspect(svg.contains("<rect"), content="true")
+}
+
+///|
+test "heatmap colors cells across the value range" {
+  let svg = @mooncharts.heatmap(["r1", "r2"], ["c1", "c2"], [
+    [1.0, 2.0],
+    [3.0, 4.0],
+  ])
+  inspect(svg.has_prefix("<svg"), content="true")
+  // Extremes of the default scale: low color on min, high color on max.
+  inspect(svg.contains("#e6f1fb"), content="true")
+  inspect(svg.contains("#185fa5"), content="true")
+  inspect(svg.contains("r1"), content="true")
+  inspect(svg.contains("c2"), content="true")
+}
+
+///|
+test "bar_chart_horizontal lays bars out sideways with left labels" {
+  let svg = @mooncharts.bar_chart_horizontal([("alpha", 30.0), ("beta", 50.0)])
+  inspect(svg.has_prefix("<svg"), content="true")
+  inspect(svg.contains("alpha"), content="true")
+  inspect(svg.contains(">50<"), content="true")
 }
 
 ///|

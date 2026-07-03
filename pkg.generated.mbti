@@ -8,6 +8,8 @@ pub fn bar_chart(Array[(String, Double)], title? : String, width? : Double, heig
 
 pub fn bar_chart_grouped(Array[String], Array[(String, Array[Double])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
+pub fn bar_chart_horizontal(Array[(String, Double)], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+
 pub fn bar_chart_stacked(Array[String], Array[(String, Array[Double])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
 pub fn container(String, Array[(String, String)], String) -> String
@@ -17,6 +19,10 @@ pub fn document(Double, Double, String) -> String
 pub fn elem(String, Array[(String, String)]) -> String
 
 pub fn escape(String) -> String
+
+pub fn heatmap(Array[String], Array[String], Array[Array[Double]], title? : String, width? : Double, height? : Double, low_color? : String, high_color? : String, theme? : Theme) -> String
+
+pub fn histogram(Array[Double], bins? : Int, title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
 pub fn line_chart(Array[(Double, Double)], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 

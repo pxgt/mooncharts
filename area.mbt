@@ -19,16 +19,18 @@ pub fn area_chart(
   let plot_h = height - top - bottom
   let xs = data.map(fn(p) { p.0 })
   let ys = data.map(fn(p) { p.1 })
-  let (xlo, xhi) = extent(xs)
+  let (xlo_raw, xhi_raw) = extent(xs)
   let (ylo_raw, yhi) = extent(ys)
   let ylo = if ylo_raw > 0.0 { 0.0 } else { ylo_raw }
   let (axis_lo, axis_hi, ticks) = nice_ticks(ylo, yhi, 5)
+  let (xlo, xhi, x_ticks) = nice_ticks(xlo_raw, xhi_raw, 6)
   let baseline = top + plot_h
   let body = StringBuilder::new()
   body.write_string(background_rect(theme, width, height))
   body.write_string(
     y_axis(theme, left, top, plot_w, plot_h, axis_lo, axis_hi, ticks),
   )
+  body.write_string(x_axis(theme, left, top, plot_w, plot_h, xlo, xhi, x_ticks))
   let n = data.length()
   if n > 0 {
     let color = theme.color_at(0)

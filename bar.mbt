@@ -3,9 +3,8 @@
 ///|
 /// Render a vertical bar chart as a standalone SVG document string.
 ///
-/// `data` is a list of `(label, value)` pairs; values are expected to be
-/// non-negative and the tallest bar fills the plot area. `title`, `width`,
-/// `height` and `theme` are optional.
+/// `data` is a list of `(label, value)` pairs; negative values draw downward
+/// from the zero baseline. `title`, `width`, `height` and `theme` are optional.
 pub fn bar_chart(
   data : Array[(String, Double)],
   title? : String = "",
@@ -19,11 +18,14 @@ pub fn bar_chart(
   let bottom = 48.0
   let plot_w = width - left - right
   let plot_h = height - top - bottom
-  // The largest value sets the vertical scale; guard the empty / all-zero case.
+  // The value range sets the vertical scale; always include zero so bars have
+  // a meaningful baseline, and guard the all-zero case.
   let values = data.map(fn(d) { d.1 })
-  let (_, raw_max) = extent(values)
-  let max = if raw_max <= 0.0 { 1.0 } else { raw_max }
-  let (axis_lo, axis_hi, ticks) = nice_ticks(0.0, max, 5)
+  let (raw_lo, raw_hi) = extent(values)
+  let lo = if raw_lo > 0.0 { 0.0 } else { raw_lo }
+  let hi = if raw_hi < 0.0 { 0.0 } else { raw_hi }
+  let hi = if lo == 0.0 && hi == 0.0 { 1.0 } else { hi }
+  let (axis_lo, axis_hi, ticks) = nice_ticks(lo, hi, 5)
   let n = data.length()
   let body = StringBuilder::new()
   body.write_string(background_rect(theme, width, height))
@@ -34,12 +36,14 @@ pub fn bar_chart(
   if n > 0 {
     let slot = plot_w / n.to_double()
     let bar_w = slot * 0.62
+    let zero_y = scale_linear(0.0, axis_lo, axis_hi, top + plot_h, top)
     for i in 0..<n {
       let (name, value) = data[i]
-      let bar_h = value / axis_hi * plot_h
       let x = left + slot * i.to_double() + (slot - bar_w) / 2.0
-      let y = top + plot_h - bar_h
-      // The bar itself.
+      let val_y = scale_linear(value, axis_lo, axis_hi, top + plot_h, top)
+      let y = if value >= 0.0 { val_y } else { zero_y }
+      let bar_h = if value >= 0.0 { zero_y - val_y } else { val_y - zero_y }
+      // The bar itself, growing up or down from the zero line.
       body.write_string(
         elem("rect", [
           ("x", num(x)),
@@ -50,11 +54,12 @@ pub fn bar_chart(
           ("rx", "2"),
         ]),
       )
-      // Value printed just above the bar.
+      // Value printed just beyond the tip of the bar.
+      let label_y = if value >= 0.0 { y - 6.0 } else { y + bar_h + 14.0 }
       body.write_string(
-        label(x + bar_w / 2.0, y - 6.0, num(value), fill=theme.text),
+        label(x + bar_w / 2.0, label_y, num(value), fill=theme.text),
       )
-      // Category label below the baseline.
+      // Category label below the plot area.
       body.write_string(
         label(x + bar_w / 2.0, top + plot_h + 16.0, name, fill=theme.text),
       )

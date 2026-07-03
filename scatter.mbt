@@ -21,20 +21,21 @@ pub fn scatter_chart(
   let plot_h = height - top - bottom
   let xs = data.map(fn(p) { p.0 })
   let ys = data.map(fn(p) { p.1 })
-  let (xlo, xhi) = extent(xs)
+  let (xlo_raw, xhi_raw) = extent(xs)
   let (ylo, yhi) = extent(ys)
-  // Pad the x domain by 5% so extreme points keep clear of the frame.
-  let xpad = (xhi - xlo) * 0.05
   let (axis_lo, axis_hi, ticks) = nice_ticks(ylo, yhi, 5)
+  // Nicely rounded x ticks; the rounded domain usually already pads the data.
+  let (xlo, xhi, x_ticks) = nice_ticks(xlo_raw, xhi_raw, 6)
   let body = StringBuilder::new()
   body.write_string(background_rect(theme, width, height))
   body.write_string(
     y_axis(theme, left, top, plot_w, plot_h, axis_lo, axis_hi, ticks),
   )
+  body.write_string(x_axis(theme, left, top, plot_w, plot_h, xlo, xhi, x_ticks))
   let color = theme.color_at(0)
   for i in 0..<data.length() {
     let (x, y) = data[i]
-    let px = scale_linear(x, xlo - xpad, xhi + xpad, left, left + plot_w)
+    let px = scale_linear(x, xlo, xhi, left, left + plot_w)
     let py = scale_linear(y, axis_lo, axis_hi, top + plot_h, top)
     body.write_string(
       elem("circle", [
