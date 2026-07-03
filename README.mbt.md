@@ -21,8 +21,10 @@ the browser or generate static SVG on the backend.
 
 ## Features
 
-- Ten chart types: bar, line, area, pie, donut, scatter, multi-series line, grouped & stacked bar, radar
-- Nicely rounded value axes with gridlines (Heckbert "nice numbers")
+- Thirteen chart types: bar (vertical / horizontal / grouped / stacked), line,
+  multi-series line, area, pie, donut, scatter, radar, histogram, heatmap
+- Nicely rounded ticks on both axes, gridlines, zero-baseline handling for
+  negative values (Heckbert "nice numbers")
 - Light / dark themes and custom color palettes
 - Reusable SVG primitives — compose your own shapes
 - Typed, defaulted configuration (no stringly-typed option bags)
@@ -72,7 +74,10 @@ Write the returned string to a `.svg` file, or embed it directly in an HTML page
 | `line_chart_multi` | `Array[(String, Array[(Double, Double)])]` | several named line series + legend |
 | `bar_chart_grouped` | `Array[String]`, `Array[(String, Array[Double])]` | grouped bars per category + legend |
 | `bar_chart_stacked` | `Array[String]`, `Array[(String, Array[Double])]` | stacked bars per category + legend |
+| `bar_chart_horizontal` | `Array[(String, Double)]` | sideways bars with left-hand category labels |
 | `radar_chart` | `Array[String]`, `Array[(String, Array[Double])]` | spider chart, one filled polygon per series |
+| `histogram` | `Array[Double]` | raw samples binned into `bins?` equal-width bars |
+| `heatmap` | `Array[String]`, `Array[String]`, `Array[Array[Double]]` | color-scaled matrix cells with value labels |
 
 All chart functions share optional `title?`, `width?`, `height?` and `theme?` parameters.
 
