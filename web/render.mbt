@@ -54,6 +54,19 @@ pub fn render(
       @mooncharts.bar_chart_stacked(labels, two, theme~, width=w, height=h)
     "radar" => @mooncharts.radar_chart(labels, two, theme~, width=w, height=h)
     "hbar" => @mooncharts.bar_chart_horizontal(data, theme~, width=w, height=h)
+    "stackedarea" => {
+      let sxs : Array[Double] = []
+      for i in 0..<values.length() {
+        sxs.push(i.to_double())
+      }
+      @mooncharts.area_chart_stacked(
+        sxs,
+        [("Series 1", values), ("Series 2", values2)],
+        theme~,
+        width=w,
+        height=h,
+      )
+    }
     "heatmap" => {
       // Fold the six slider values into a 2x3 matrix.
       let m : Array[Array[Double]] = [[], []]

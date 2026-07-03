@@ -167,6 +167,27 @@ fn main {
       width=460.0,
       height=300.0,
     ),
+    @mooncharts.box_plot(
+      [
+        ("API", [42.0, 45.0, 48.0, 50.0, 52.0, 55.0, 58.0, 61.0, 95.0]),
+        ("Web", [55.0, 60.0, 62.0, 65.0, 68.0, 72.0, 75.0, 80.0]),
+        ("Batch", [30.0, 33.0, 35.0, 36.0, 38.0, 40.0, 44.0, 70.0]),
+      ],
+      title="Latency by Service (ms)",
+      width=460.0,
+      height=320.0,
+    ),
+    @mooncharts.area_chart_stacked(
+      [1.0, 2.0, 3.0, 4.0, 5.0, 6.0],
+      [
+        ("Mobile", [20.0, 26.0, 30.0, 34.0, 40.0, 46.0]),
+        ("Desktop", [35.0, 36.0, 34.0, 38.0, 40.0, 42.0]),
+        ("Tablet", [8.0, 9.0, 10.0, 9.0, 11.0, 12.0]),
+      ],
+      title="Sessions by Device (stacked)",
+      width=520.0,
+      height=320.0,
+    ),
   ]
   let sb = StringBuilder::new()
   sb.write_string(

@@ -21,10 +21,12 @@ the browser or generate static SVG on the backend.
 
 ## Features
 
-- Thirteen chart types: bar (vertical / horizontal / grouped / stacked), line,
-  multi-series line, area, pie, donut, scatter, radar, histogram, heatmap
+- Fifteen chart types: bar (vertical / horizontal / grouped / stacked), line,
+  multi-series line, area, stacked area, pie, donut, scatter, radar,
+  histogram, box plot, heatmap
 - Nicely rounded ticks on both axes, gridlines, zero-baseline handling for
   negative values (Heckbert "nice numbers")
+- Reusable statistics helpers: `mean`, `median`, `quartiles`
 - Light / dark themes and custom color palettes
 - Reusable SVG primitives — compose your own shapes
 - Typed, defaulted configuration (no stringly-typed option bags)
@@ -77,7 +79,11 @@ Write the returned string to a `.svg` file, or embed it directly in an HTML page
 | `bar_chart_horizontal` | `Array[(String, Double)]` | sideways bars with left-hand category labels |
 | `radar_chart` | `Array[String]`, `Array[(String, Array[Double])]` | spider chart, one filled polygon per series |
 | `histogram` | `Array[Double]` | raw samples binned into `bins?` equal-width bars |
+| `box_plot` | `Array[(String, Array[Double])]` | quartile boxes, 1.5×IQR whiskers, outlier dots |
+| `area_chart_stacked` | `Array[Double]`, `Array[(String, Array[Double])]` | accumulated area layers + legend |
 | `heatmap` | `Array[String]`, `Array[String]`, `Array[Array[Double]]` | color-scaled matrix cells with value labels |
+
+Full signatures for every function live in [`docs/api.md`](docs/api.md).
 
 All chart functions share optional `title?`, `width?`, `height?` and `theme?` parameters.
 
