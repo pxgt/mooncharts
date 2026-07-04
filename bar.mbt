@@ -4,9 +4,11 @@
 /// Render a vertical bar chart as a standalone SVG document string.
 ///
 /// `data` is a list of `(label, value)` pairs; negative values draw downward
-/// from the zero baseline. `title`, `width`, `height` and `theme` are optional.
+/// from the zero baseline. `errors[i]` (optional) draws a symmetric ±error bar
+/// on bar `i`. `title`, `width`, `height` and `theme` are optional.
 pub fn bar_chart(
   data : Array[(String, Double)],
+  errors? : Array[Double] = [],
   title? : String = "",
   width? : Double = 480.0,
   height? : Double = 320.0,
@@ -18,10 +20,11 @@ pub fn bar_chart(
   let bottom = 48.0
   let plot_w = width - left - right
   let plot_h = height - top - bottom
-  // The value range sets the vertical scale; always include zero so bars have
-  // a meaningful baseline, and guard the all-zero case.
+  // The value range (widened by any error bars) sets the vertical scale;
+  // always include zero so bars have a meaningful baseline, and guard the
+  // all-zero case.
   let values = data.map(fn(d) { d.1 })
-  let (raw_lo, raw_hi) = extent(values)
+  let (raw_lo, raw_hi) = extent_with_errors(values, errors)
   let lo = if raw_lo > 0.0 { 0.0 } else { raw_lo }
   let hi = if raw_hi < 0.0 { 0.0 } else { raw_hi }
   let hi = if lo == 0.0 && hi == 0.0 { 1.0 } else { hi }
@@ -54,8 +57,24 @@ pub fn bar_chart(
           ("rx", "2"),
         ]),
       )
-      // Value printed just beyond the tip of the bar.
-      let label_y = if value >= 0.0 { y - 6.0 } else { y + bar_h + 14.0 }
+      // Optional ±error bar centered on the bar tip; the value label then
+      // moves past the error bar so they never overlap.
+      let e = error_at(errors, i)
+      if e > 0.0 {
+        body.write_string(
+          error_bar(
+            x + bar_w / 2.0,
+            scale_linear(value - e, axis_lo, axis_hi, top + plot_h, top),
+            scale_linear(value + e, axis_lo, axis_hi, top + plot_h, top),
+            bar_w * 0.4,
+            theme.text,
+          ),
+        )
+      }
+      // Value printed just beyond the tip of the bar (or its error bar).
+      let tip = if value >= 0.0 { value + e } else { value - e }
+      let tip_y = scale_linear(tip, axis_lo, axis_hi, top + plot_h, top)
+      let label_y = if value >= 0.0 { tip_y - 6.0 } else { tip_y + 14.0 }
       body.write_string(
         label(x + bar_w / 2.0, label_y, num(value), fill=theme.text),
       )

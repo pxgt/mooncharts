@@ -185,6 +185,20 @@ test "bar_chart_horizontal lays bars out sideways with left labels" {
 }
 
 ///|
+test "error bars widen the axis and draw stem plus caps" {
+  // Without errors the axis tops out at 10; ±4 must push it to 15.
+  let plain = @mooncharts.bar_chart([("A", 10.0)])
+  let with_err = @mooncharts.bar_chart([("A", 10.0)], errors=[4.0])
+  inspect(plain.contains(">15<"), content="false")
+  inspect(with_err.contains(">15<"), content="true")
+  // Line and scatter accept errors too and stay well-formed.
+  let l = @mooncharts.line_chart([(0.0, 1.0), (1.0, 2.0)], errors=[1.0, 1.0])
+  inspect(l.contains(">3<"), content="true")
+  let s = @mooncharts.scatter_chart([(0.0, 1.0), (1.0, 2.0)], errors=[0.5, 0.5])
+  inspect(s.has_prefix("<svg"), content="true")
+}
+
+///|
 test "quartiles handle even, odd and tiny inputs" {
   // Even count: halves split cleanly.
   let (q1, m, q3) = @mooncharts.quartiles([

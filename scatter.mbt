@@ -7,6 +7,7 @@
 /// `height`, the point `radius` and `theme` are optional.
 pub fn scatter_chart(
   data : Array[(Double, Double)],
+  errors? : Array[Double] = [],
   title? : String = "",
   width? : Double = 480.0,
   height? : Double = 320.0,
@@ -22,7 +23,7 @@ pub fn scatter_chart(
   let xs = data.map(fn(p) { p.0 })
   let ys = data.map(fn(p) { p.1 })
   let (xlo_raw, xhi_raw) = extent(xs)
-  let (ylo, yhi) = extent(ys)
+  let (ylo, yhi) = extent_with_errors(ys, errors)
   let (axis_lo, axis_hi, ticks) = nice_ticks(ylo, yhi, 5)
   // Nicely rounded x ticks; the rounded domain usually already pads the data.
   let (xlo, xhi, x_ticks) = nice_ticks(xlo_raw, xhi_raw, 6)
@@ -37,6 +38,19 @@ pub fn scatter_chart(
     let (x, y) = data[i]
     let px = scale_linear(x, xlo, xhi, left, left + plot_w)
     let py = scale_linear(y, axis_lo, axis_hi, top + plot_h, top)
+    // Error bar behind the dot.
+    let e = error_at(errors, i)
+    if e > 0.0 {
+      body.write_string(
+        error_bar(
+          px,
+          scale_linear(y - e, axis_lo, axis_hi, top + plot_h, top),
+          scale_linear(y + e, axis_lo, axis_hi, top + plot_h, top),
+          8.0,
+          color,
+        ),
+      )
+    }
     body.write_string(
       elem("circle", [
         ("cx", num(px)),

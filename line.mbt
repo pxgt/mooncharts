@@ -4,9 +4,11 @@
 /// Render a line chart connecting a series of `(x, y)` points as a standalone
 /// SVG document string. The value axis auto-fits the data with nicely rounded
 /// gridlines; when all y-values are positive the baseline is anchored at zero.
-/// `title`, `width`, `height` and `theme` are optional.
+/// `errors[i]` (optional) draws a symmetric ±error bar on point `i`. `title`,
+/// `width`, `height` and `theme` are optional.
 pub fn line_chart(
   data : Array[(Double, Double)],
+  errors? : Array[Double] = [],
   title? : String = "",
   width? : Double = 480.0,
   height? : Double = 320.0,
@@ -21,7 +23,7 @@ pub fn line_chart(
   let xs = data.map(fn(p) { p.0 })
   let ys = data.map(fn(p) { p.1 })
   let (xlo_raw, xhi_raw) = extent(xs)
-  let (ylo_raw, yhi) = extent(ys)
+  let (ylo_raw, yhi) = extent_with_errors(ys, errors)
   // Anchor the baseline at zero for the common all-positive case.
   let ylo = if ylo_raw > 0.0 { 0.0 } else { ylo_raw }
   let (axis_lo, axis_hi, ticks) = nice_ticks(ylo, yhi, 5)
@@ -60,6 +62,22 @@ pub fn line_chart(
         ("stroke-linecap", "round"),
       ]),
     )
+    // Error bars first so the markers sit on top of them.
+    for i in 0..<n {
+      let e = error_at(errors, i)
+      if e > 0.0 {
+        let (_, y) = data[i]
+        body.write_string(
+          error_bar(
+            px_arr[i],
+            scale_linear(y - e, axis_lo, axis_hi, top + plot_h, top),
+            scale_linear(y + e, axis_lo, axis_hi, top + plot_h, top),
+            8.0,
+            color,
+          ),
+        )
+      }
+    }
     for i in 0..<n {
       body.write_string(
         elem("circle", [
