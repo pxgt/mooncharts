@@ -167,6 +167,18 @@ fn main {
       width=460.0,
       height=300.0,
     ),
+    @mooncharts.bar_chart(
+      [
+        ("Trial 1", 42.0),
+        ("Trial 2", 55.0),
+        ("Trial 3", 48.0),
+        ("Trial 4", 61.0),
+      ],
+      errors=[4.0, 6.5, 3.0, 5.0],
+      title="Measurements with error bars",
+      width=460.0,
+      height=300.0,
+    ),
     @mooncharts.box_plot(
       [
         ("API", [42.0, 45.0, 48.0, 50.0, 52.0, 55.0, 58.0, 61.0, 95.0]),

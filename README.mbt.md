@@ -26,7 +26,9 @@ the browser or generate static SVG on the backend.
   histogram, box plot, heatmap
 - Nicely rounded ticks on both axes, gridlines, zero-baseline handling for
   negative values (Heckbert "nice numbers")
+- Symmetric ±error bars on bar, line and scatter charts (`errors?`)
 - Reusable statistics helpers: `mean`, `median`, `quartiles`
+- Micro-benchmarked: a typical chart renders in 12–25 µs (see Performance)
 - Light / dark themes and custom color palettes
 - Reusable SVG primitives — compose your own shapes
 - Typed, defaulted configuration (no stringly-typed option bags)
@@ -83,7 +85,29 @@ Write the returned string to a `.svg` file, or embed it directly in an HTML page
 | `area_chart_stacked` | `Array[Double]`, `Array[(String, Array[Double])]` | accumulated area layers + legend |
 | `heatmap` | `Array[String]`, `Array[String]`, `Array[Array[Double]]` | color-scaled matrix cells with value labels |
 
+`bar_chart`, `line_chart` and `scatter_chart` also accept `errors? : Array[Double]`
+to draw symmetric ±error bars (the value axis widens to fit them).
+
 Full signatures for every function live in [`docs/api.md`](docs/api.md).
+
+## Performance
+
+Rendering is a pure string computation — no DOM, no canvas — so it is fast.
+Measured with `moon bench`, MoonBit's built-in benchmark runner, on this
+library's own calls:
+
+| Benchmark | wasm-gc | js |
+|-----------|--------:|---:|
+| `pie_chart`, 6 slices | 17.7 µs | 11.9 µs |
+| `bar_chart`, 6 bars | 24.3 µs | 15.8 µs |
+| `line_chart`, 100 points | 94.9 µs | 62.3 µs |
+| `heatmap`, 10×10 | 211 µs | 138 µs |
+| `line_chart`, 1000 points | 1.12 ms | 0.55 ms |
+
+Mean over `moon bench`'s repeated runs on one developer machine — reproduce
+with `moon bench` / `moon bench --target js`. The
+[live demo](https://pxgt.github.io/mooncharts/) also displays the render time
+of every chart you build.
 
 All chart functions share optional `title?`, `width?`, `height?` and `theme?` parameters.
 

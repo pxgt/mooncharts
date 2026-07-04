@@ -14,7 +14,7 @@ Shared optional parameters (all charts): `title? : String`,
 
 | Function | Signature highlights | Notes |
 |----------|---------------------|-------|
-| `bar_chart(data)` | — | vertical bars; **negative values** grow down from the zero baseline |
+| `bar_chart(data, errors?)` | `errors? : Array[Double]` | vertical bars; **negative values** grow down from the zero baseline; optional ±error bars |
 | `bar_chart_horizontal(data)` | — | sideways bars, category labels on the left; non-negative values |
 | `pie_chart(data, donut?)` | `donut? : Double = 0.0` | pie; pass `donut=0.4..0.7` for a donut ring |
 
@@ -36,9 +36,9 @@ anchors at zero when all values are positive.
 
 | Function | Signature highlights | Notes |
 |----------|---------------------|-------|
-| `line_chart(points)` | — | polyline with point markers |
+| `line_chart(points, errors?)` | `errors? : Array[Double]` | polyline with point markers; optional ±error bars |
 | `area_chart(points)` | — | line with translucent fill down to the baseline |
-| `scatter_chart(points, radius?)` | `radius? : Double = 4.0` | dots only |
+| `scatter_chart(points, errors?, radius?)` | `radius? : Double = 4.0` | dots; optional ±error bars |
 | `line_chart_multi(series)` | `Array[(String, Array[(Double, Double)])]` | several named lines + legend |
 | `area_chart_stacked(xs, series)` | `Array[Double]` + `Array[(String, Array[Double])]` | layers accumulate upward + legend |
 

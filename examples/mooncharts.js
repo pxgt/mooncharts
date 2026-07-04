@@ -1,4 +1,11 @@
 (() => {
+  function _M0DTPC16option6OptionGdE4None() {}
+  _M0DTPC16option6OptionGdE4None.prototype.$tag = 0;
+  const _M0DTPC16option6OptionGdE4None__ = new _M0DTPC16option6OptionGdE4None();
+  function _M0DTPC16option6OptionGdE4Some(param0) {
+    this._0 = param0;
+  }
+  _M0DTPC16option6OptionGdE4Some.prototype.$tag = 1;
   function _M0TPB13StringBuilder(param0) {
     this.val = param0;
   }
@@ -24,50 +31,65 @@
     this.text = param4;
     this.title = param5;
   }
+  function _M0DTPC16option6OptionGRPB5ArrayGdEE4None() {}
+  _M0DTPC16option6OptionGRPB5ArrayGdEE4None.prototype.$tag = 0;
+  const _M0DTPC16option6OptionGRPB5ArrayGdEE4None__ = new _M0DTPC16option6OptionGRPB5ArrayGdEE4None();
+  function _M0DTPC16option6OptionGRPB5ArrayGdEE4Some(param0) {
+    this._0 = param0;
+  }
+  _M0DTPC16option6OptionGRPB5ArrayGdEE4Some.prototype.$tag = 1;
   const _M0FP25Xpeng10mooncharts14light__palette = ["#4e79a7", "#f28e2b", "#e15759", "#76b7b2", "#59a14f", "#edc948", "#b07aa1", "#ff9da7", "#9c755f", "#bab0ac"];
   const _M0FP25Xpeng10mooncharts13dark__palette = ["#6ea8e0", "#f6a04d", "#ef6f70", "#8fd4cd", "#7fc06a", "#f2d65c", "#c79bc0", "#ffb3bb", "#bd9279", "#cfcac4"];
-  const _M0FP25Xpeng10mooncharts4hex2N5charsS283 = "0123456789abcdef";
-  const _M0FP25Xpeng10mooncharts8documentN5tupleS1554 = { _0: "xmlns", _1: "http://www.w3.org/2000/svg" };
-  const _M0FP25Xpeng10mooncharts13label_2einnerN5tupleS1553 = { _0: "font-family", _1: "sans-serif" };
-  const _M0FP25Xpeng10mooncharts7y__axisN5tupleS1558 = { _0: "stroke-width", _1: "1" };
-  const _M0FP25Xpeng10mooncharts18legend__horizontalN5tupleS1560 = { _0: "rx", _1: "2" };
-  const _M0FP25Xpeng10mooncharts16background__rectN5tupleS1551 = { _0: "x", _1: "0" };
-  const _M0FP25Xpeng10mooncharts16background__rectN5tupleS1552 = { _0: "y", _1: "0" };
-  const _M0FP25Xpeng10mooncharts6extentN5tupleS1556 = { _0: 0, _1: 1 };
-  const _M0FP25Xpeng10mooncharts15x__axis_2einnerN5tupleS1557 = { _0: "stroke-width", _1: "1" };
-  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1592 = { _0: "fill-opacity", _1: "0.18" };
-  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1593 = { _0: "fill", _1: "none" };
-  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1594 = { _0: "stroke-width", _1: "2" };
-  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1595 = { _0: "stroke-linejoin", _1: "round" };
-  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1596 = { _0: "stroke-linecap", _1: "round" };
-  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1597 = { _0: "r", _1: "3" };
-  const _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1598 = { _0: "fill-opacity", _1: "0.4" };
-  const _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1599 = { _0: "fill", _1: "none" };
-  const _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1600 = { _0: "stroke-width", _1: "1.5" };
-  const _M0FP25Xpeng10mooncharts22scatter__chart_2einnerN5tupleS1559 = { _0: "fill-opacity", _1: "0.7" };
-  const _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1574 = { _0: "fill", _1: "none" };
-  const _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1575 = { _0: "stroke-width", _1: "2" };
-  const _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1576 = { _0: "stroke-linejoin", _1: "round" };
-  const _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1577 = { _0: "stroke-linecap", _1: "round" };
-  const _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1578 = { _0: "r", _1: "3" };
-  const _M0FP25Xpeng10mooncharts27bar__chart__grouped_2einnerN5tupleS1591 = { _0: "rx", _1: "1" };
-  const _M0FP25Xpeng10mooncharts17parse__hex__colorN5tupleS1579 = { _0: 0, _1: 0, _2: 0 };
-  const _M0FP25Xpeng10mooncharts15heatmap_2einnerN5tupleS1580 = { _0: "rx", _1: "3" };
-  const _M0FP25Xpeng10mooncharts30bar__chart__horizontal_2einnerN5tupleS1581 = { _0: "rx", _1: "2" };
-  const _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1561 = { _0: "fill", _1: "none" };
-  const _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1562 = { _0: "stroke-width", _1: "1" };
-  const _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1563 = { _0: "stroke-width", _1: "1" };
-  const _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1564 = { _0: "fill-opacity", _1: "0.15" };
-  const _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1565 = { _0: "stroke-width", _1: "2" };
-  const _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1566 = { _0: "width", _1: "12" };
-  const _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1567 = { _0: "height", _1: "12" };
-  const _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1568 = { _0: "rx", _1: "2" };
-  const _M0FP25Xpeng10mooncharts18bar__chart_2einnerN5tupleS1590 = { _0: "rx", _1: "2" };
-  const _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1569 = { _0: "fill", _1: "none" };
-  const _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1570 = { _0: "stroke-width", _1: "2" };
-  const _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1571 = { _0: "stroke-linejoin", _1: "round" };
-  const _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1572 = { _0: "stroke-linecap", _1: "round" };
-  const _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1573 = { _0: "r", _1: "3" };
+  const _M0FP25Xpeng10mooncharts4hex2N5charsS287 = "0123456789abcdef";
+  const _M0FP25Xpeng10mooncharts8documentN5tupleS1617 = { _0: "xmlns", _1: "http://www.w3.org/2000/svg" };
+  const _M0FP25Xpeng10mooncharts13label_2einnerN5tupleS1616 = { _0: "font-family", _1: "sans-serif" };
+  const _M0FP25Xpeng10mooncharts7y__axisN5tupleS1623 = { _0: "stroke-width", _1: "1" };
+  const _M0FP25Xpeng10mooncharts18legend__horizontalN5tupleS1625 = { _0: "rx", _1: "2" };
+  const _M0FP25Xpeng10mooncharts16background__rectN5tupleS1614 = { _0: "x", _1: "0" };
+  const _M0FP25Xpeng10mooncharts16background__rectN5tupleS1615 = { _0: "y", _1: "0" };
+  const _M0FP25Xpeng10mooncharts6extentN5tupleS1621 = { _0: 0, _1: 1 };
+  const _M0FP25Xpeng10mooncharts15x__axis_2einnerN5tupleS1622 = { _0: "stroke-width", _1: "1" };
+  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1657 = { _0: "fill-opacity", _1: "0.18" };
+  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1658 = { _0: "fill", _1: "none" };
+  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1659 = { _0: "stroke-width", _1: "2" };
+  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1660 = { _0: "stroke-linejoin", _1: "round" };
+  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1661 = { _0: "stroke-linecap", _1: "round" };
+  const _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1662 = { _0: "r", _1: "3" };
+  const _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1663 = { _0: "fill-opacity", _1: "0.4" };
+  const _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1664 = { _0: "fill", _1: "none" };
+  const _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1665 = { _0: "stroke-width", _1: "1.5" };
+  const _M0FP25Xpeng10mooncharts10error__barN5tupleS1619 = { _0: "stroke-width", _1: "1.5" };
+  const _M0FP25Xpeng10mooncharts10error__barN5tupleS1620 = { _0: "stroke-width", _1: "1.5" };
+  const _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1634 = { _0: "fill", _1: "none" };
+  const _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1635 = { _0: "stroke-width", _1: "2" };
+  const _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1636 = { _0: "stroke-linejoin", _1: "round" };
+  const _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1637 = { _0: "stroke-linecap", _1: "round" };
+  const _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1638 = { _0: "r", _1: "3" };
+  const _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1639 = { _0: "fill", _1: "none" };
+  const _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1640 = { _0: "stroke-width", _1: "2" };
+  const _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1641 = { _0: "stroke-linejoin", _1: "round" };
+  const _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1642 = { _0: "stroke-linecap", _1: "round" };
+  const _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1643 = { _0: "r", _1: "3" };
+  const _M0FP25Xpeng10mooncharts27bar__chart__grouped_2einnerN5tupleS1656 = { _0: "rx", _1: "1" };
+  const _M0FP25Xpeng10mooncharts18bar__chart_2einnerN5tupleS1655 = { _0: "rx", _1: "2" };
+  const _M0FP25Xpeng10mooncharts17parse__hex__colorN5tupleS1644 = { _0: 0, _1: 0, _2: 0 };
+  const _M0FP25Xpeng10mooncharts15heatmap_2einnerN5tupleS1645 = { _0: "rx", _1: "3" };
+  const _M0FP25Xpeng10mooncharts30bar__chart__horizontal_2einnerN5tupleS1646 = { _0: "rx", _1: "2" };
+  const _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1626 = { _0: "fill", _1: "none" };
+  const _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1627 = { _0: "stroke-width", _1: "1" };
+  const _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1628 = { _0: "stroke-width", _1: "1" };
+  const _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1629 = { _0: "fill-opacity", _1: "0.15" };
+  const _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1630 = { _0: "stroke-width", _1: "2" };
+  const _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1631 = { _0: "width", _1: "12" };
+  const _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1632 = { _0: "height", _1: "12" };
+  const _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1633 = { _0: "rx", _1: "2" };
+  const _M0FP25Xpeng10mooncharts22scatter__chart_2einnerN5tupleS1624 = { _0: "fill-opacity", _1: "0.7" };
+  const _M0FP35Xpeng10mooncharts3web6renderN6constrS50 = new _M0DTPC16option6OptionGdE4Some(640);
+  const _M0FP35Xpeng10mooncharts3web6renderN6constrS51 = new _M0DTPC16option6OptionGdE4Some(380);
+  const _M0FP35Xpeng10mooncharts3web6renderN6constrS52 = new _M0DTPC16option6OptionGdE4Some(640);
+  const _M0FP35Xpeng10mooncharts3web6renderN6constrS53 = new _M0DTPC16option6OptionGdE4Some(380);
+  const _M0FP35Xpeng10mooncharts3web6renderN6constrS54 = new _M0DTPC16option6OptionGdE4Some(640);
+  const _M0FP35Xpeng10mooncharts3web6renderN6constrS55 = new _M0DTPC16option6OptionGdE4Some(380);
   function _M0MPB13StringBuilder21StringBuilder_2einner(size_hint) {
     return new _M0TPB13StringBuilder("");
   }
@@ -326,7 +348,7 @@
     return frac === 0 ? `${sign}${_M0MPC13int3Int18to__string_2einner(whole, 10)}` : (frac % 10 | 0) === 0 ? `${sign}${_M0MPC13int3Int18to__string_2einner(whole, 10)}.${_M0MPC13int3Int18to__string_2einner(frac / 10 | 0, 10)}` : frac < 10 ? `${sign}${_M0MPC13int3Int18to__string_2einner(whole, 10)}.0${_M0MPC13int3Int18to__string_2einner(frac, 10)}` : `${sign}${_M0MPC13int3Int18to__string_2einner(whole, 10)}.${_M0MPC13int3Int18to__string_2einner(frac, 10)}`;
   }
   function _M0FP25Xpeng10mooncharts16background__rect(theme, width, height) {
-    return theme.background === "" ? "" : _M0FP25Xpeng10mooncharts4elem("rect", [_M0FP25Xpeng10mooncharts16background__rectN5tupleS1551, _M0FP25Xpeng10mooncharts16background__rectN5tupleS1552, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(width) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(height) }, { _0: "fill", _1: theme.background }]);
+    return theme.background === "" ? "" : _M0FP25Xpeng10mooncharts4elem("rect", [_M0FP25Xpeng10mooncharts16background__rectN5tupleS1614, _M0FP25Xpeng10mooncharts16background__rectN5tupleS1615, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(width) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(height) }, { _0: "fill", _1: theme.background }]);
   }
   function _M0FP25Xpeng10mooncharts4text(x, y, content, attrs) {
     const base = [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y) }];
@@ -346,18 +368,45 @@
     return `<text${_M0FP25Xpeng10mooncharts13render__attrs(base)}>${_M0FP25Xpeng10mooncharts6escape(content)}</text>`;
   }
   function _M0FP25Xpeng10mooncharts13label_2einner(x, y, content, size, anchor, weight, fill) {
-    return _M0FP25Xpeng10mooncharts4text(x, y, content, [{ _0: "text-anchor", _1: anchor }, _M0FP25Xpeng10mooncharts13label_2einnerN5tupleS1553, { _0: "font-size", _1: _M0MPC13int3Int18to__string_2einner(size, 10) }, { _0: "font-weight", _1: weight }, { _0: "fill", _1: fill }]);
+    return _M0FP25Xpeng10mooncharts4text(x, y, content, [{ _0: "text-anchor", _1: anchor }, _M0FP25Xpeng10mooncharts13label_2einnerN5tupleS1616, { _0: "font-size", _1: _M0MPC13int3Int18to__string_2einner(size, 10) }, { _0: "font-weight", _1: weight }, { _0: "fill", _1: fill }]);
   }
   function _M0FP25Xpeng10mooncharts9container(tag, attrs, inner) {
     return `<${tag}${_M0FP25Xpeng10mooncharts13render__attrs(attrs)}>${inner}</${tag}>`;
   }
   function _M0FP25Xpeng10mooncharts8document(width, height, body) {
-    const attrs = [_M0FP25Xpeng10mooncharts8documentN5tupleS1554, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(width) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(height) }, { _0: "viewBox", _1: `0 0 ${_M0FP25Xpeng10mooncharts3num(width)} ${_M0FP25Xpeng10mooncharts3num(height)}` }];
+    const attrs = [_M0FP25Xpeng10mooncharts8documentN5tupleS1617, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(width) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(height) }, { _0: "viewBox", _1: `0 0 ${_M0FP25Xpeng10mooncharts3num(width)} ${_M0FP25Xpeng10mooncharts3num(height)}` }];
     return _M0FP25Xpeng10mooncharts9container("svg", attrs, body);
+  }
+  function _M0FP25Xpeng10mooncharts9error__at(errors, i) {
+    if (i < errors.length) {
+      const e = _M0MPC15array5Array2atGdE(errors, i);
+      return e < 0 ? -e : e;
+    } else {
+      return 0;
+    }
+  }
+  function _M0FP25Xpeng10mooncharts10error__bar(x, y_lo, y_hi, cap_w, color) {
+    const sb = _M0MPB13StringBuilder21StringBuilder_2einner(0);
+    _M0IPB13StringBuilderPB6Logger13write__string(sb, _M0FP25Xpeng10mooncharts4elem("line", [{ _0: "x1", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y1", _1: _M0FP25Xpeng10mooncharts3num(y_lo) }, { _0: "x2", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y2", _1: _M0FP25Xpeng10mooncharts3num(y_hi) }, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts10error__barN5tupleS1619]));
+    const _bind = [y_lo, y_hi];
+    const _bind$2 = _bind.length;
+    let _tmp = 0;
+    while (true) {
+      const _ = _tmp;
+      if (_ < _bind$2) {
+        const y = _bind[_];
+        _M0IPB13StringBuilderPB6Logger13write__string(sb, _M0FP25Xpeng10mooncharts4elem("line", [{ _0: "x1", _1: _M0FP25Xpeng10mooncharts3num(x - cap_w / 2) }, { _0: "y1", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "x2", _1: _M0FP25Xpeng10mooncharts3num(x + cap_w / 2) }, { _0: "y2", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts10error__barN5tupleS1620]));
+        _tmp = _ + 1 | 0;
+        continue;
+      } else {
+        break;
+      }
+    }
+    return sb.val;
   }
   function _M0FP25Xpeng10mooncharts6extent(values) {
     if (values.length === 0) {
-      return _M0FP25Xpeng10mooncharts6extentN5tupleS1556;
+      return _M0FP25Xpeng10mooncharts6extentN5tupleS1621;
     }
     let lo = _M0MPC15array5Array2atGdE(values, 0);
     let hi = _M0MPC15array5Array2atGdE(values, 0);
@@ -381,6 +430,32 @@
     }
     return { _0: lo, _1: hi };
   }
+  function _M0FP25Xpeng10mooncharts20extent__with__errors(values, errors) {
+    const _bind = _M0FP25Xpeng10mooncharts6extent(values);
+    const _lo0 = _bind._0;
+    const _hi0 = _bind._1;
+    let lo = _lo0;
+    let hi = _hi0;
+    const _bind$2 = values.length;
+    let _tmp = 0;
+    while (true) {
+      const i = _tmp;
+      if (i < _bind$2) {
+        const e = _M0FP25Xpeng10mooncharts9error__at(errors, i);
+        if (_M0MPC15array5Array2atGdE(values, i) - e < lo) {
+          lo = _M0MPC15array5Array2atGdE(values, i) - e;
+        }
+        if (_M0MPC15array5Array2atGdE(values, i) + e > hi) {
+          hi = _M0MPC15array5Array2atGdE(values, i) + e;
+        }
+        _tmp = i + 1 | 0;
+        continue;
+      } else {
+        break;
+      }
+    }
+    return { _0: lo, _1: hi };
+  }
   function _M0FP25Xpeng10mooncharts13scale__linear(v, d0, d1, r0, r1) {
     return d0 === d1 ? (r0 + r1) / 2 : r0 + (v - d0) / (d1 - d0) * (r1 - r0);
   }
@@ -395,7 +470,7 @@
         const x = _M0FP25Xpeng10mooncharts13scale__linear(t, axis_lo, axis_hi, left, left + plot_w);
         if (grid) {
           const stroke = t === axis_lo ? theme.axis : theme.grid;
-          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("line", [{ _0: "x1", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y1", _1: _M0FP25Xpeng10mooncharts3num(top) }, { _0: "x2", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y2", _1: _M0FP25Xpeng10mooncharts3num(top + plot_h) }, { _0: "stroke", _1: stroke }, _M0FP25Xpeng10mooncharts15x__axis_2einnerN5tupleS1557]));
+          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("line", [{ _0: "x1", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y1", _1: _M0FP25Xpeng10mooncharts3num(top) }, { _0: "x2", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y2", _1: _M0FP25Xpeng10mooncharts3num(top + plot_h) }, { _0: "stroke", _1: stroke }, _M0FP25Xpeng10mooncharts15x__axis_2einnerN5tupleS1622]));
         }
         _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(x, top + plot_h + 16, _M0FP25Xpeng10mooncharts3num(t), 11, "middle", "normal", theme.axis));
         _tmp = _ + 1 | 0;
@@ -418,7 +493,7 @@
         const y = _M0FP25Xpeng10mooncharts13scale__linear(t, axis_lo, axis_hi, top + plot_h, top);
         const is_base = zero_in_range ? t === 0 : t === axis_lo;
         const stroke = is_base ? theme.axis : theme.grid;
-        _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("line", [{ _0: "x1", _1: _M0FP25Xpeng10mooncharts3num(left) }, { _0: "y1", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "x2", _1: _M0FP25Xpeng10mooncharts3num(left + plot_w) }, { _0: "y2", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "stroke", _1: stroke }, _M0FP25Xpeng10mooncharts7y__axisN5tupleS1558]));
+        _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("line", [{ _0: "x1", _1: _M0FP25Xpeng10mooncharts3num(left) }, { _0: "y1", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "x2", _1: _M0FP25Xpeng10mooncharts3num(left + plot_w) }, { _0: "y2", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "stroke", _1: stroke }, _M0FP25Xpeng10mooncharts7y__axisN5tupleS1623]));
         _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(left - 6, y + 4, _M0FP25Xpeng10mooncharts3num(t), 11, "end", "normal", theme.axis));
         _tmp = _ + 1 | 0;
         continue;
@@ -428,7 +503,7 @@
     }
     return body.val;
   }
-  function _M0FP25Xpeng10mooncharts22scatter__chart_2einner(data, title, width, height, radius, theme) {
+  function _M0FP25Xpeng10mooncharts22scatter__chart_2einner(data, errors, title, width, height, radius, theme) {
     const top = title === "" ? 16 : 40;
     const plot_w = width - 48 - 16;
     const plot_h = height - top - 40;
@@ -465,7 +540,7 @@
     const _bind = _M0FP25Xpeng10mooncharts6extent(xs);
     const _xlo_raw = _bind._0;
     const _xhi_raw = _bind._1;
-    const _bind$2 = _M0FP25Xpeng10mooncharts6extent(ys);
+    const _bind$2 = _M0FP25Xpeng10mooncharts20extent__with__errors(ys, errors);
     const _ylo = _bind$2._0;
     const _yhi = _bind$2._1;
     const _bind$3 = _M0FP25Xpeng10mooncharts11nice__ticks(_ylo, _yhi, 5);
@@ -491,7 +566,11 @@
         const _y = _bind$6._1;
         const px = _M0FP25Xpeng10mooncharts13scale__linear(_x, _xlo, _xhi, 48, 48 + plot_w);
         const py = _M0FP25Xpeng10mooncharts13scale__linear(_y, _axis_lo, _axis_hi, top + plot_h, top);
-        _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("circle", [{ _0: "cx", _1: _M0FP25Xpeng10mooncharts3num(px) }, { _0: "cy", _1: _M0FP25Xpeng10mooncharts3num(py) }, { _0: "r", _1: _M0FP25Xpeng10mooncharts3num(radius) }, { _0: "fill", _1: color }, _M0FP25Xpeng10mooncharts22scatter__chart_2einnerN5tupleS1559]));
+        const e = _M0FP25Xpeng10mooncharts9error__at(errors, i);
+        if (e > 0) {
+          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts10error__bar(px, _M0FP25Xpeng10mooncharts13scale__linear(_y - e, _axis_lo, _axis_hi, top + plot_h, top), _M0FP25Xpeng10mooncharts13scale__linear(_y + e, _axis_lo, _axis_hi, top + plot_h, top), 8, color));
+        }
+        _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("circle", [{ _0: "cx", _1: _M0FP25Xpeng10mooncharts3num(px) }, { _0: "cy", _1: _M0FP25Xpeng10mooncharts3num(py) }, { _0: "r", _1: _M0FP25Xpeng10mooncharts3num(radius) }, { _0: "fill", _1: color }, _M0FP25Xpeng10mooncharts22scatter__chart_2einnerN5tupleS1624]));
         _tmp$3 = i + 1 | 0;
         continue;
       } else {
@@ -503,6 +582,51 @@
       _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(width / 2, 24, title, 16, "middle", "bold", theme.title));
     }
     return _M0FP25Xpeng10mooncharts8document(width, height, body.val);
+  }
+  function _M0FP25Xpeng10mooncharts14scatter__chart(data, errors$46$opt, title$46$opt, width$46$opt, height$46$opt, radius$46$opt, theme$46$opt) {
+    let errors;
+    if (errors$46$opt.$tag === 1) {
+      const _Some = errors$46$opt;
+      errors = _Some._0;
+    } else {
+      errors = [];
+    }
+    let title;
+    if (title$46$opt === undefined) {
+      title = "";
+    } else {
+      const _Some = title$46$opt;
+      title = _Some;
+    }
+    let width;
+    if (width$46$opt.$tag === 1) {
+      const _Some = width$46$opt;
+      width = _Some._0;
+    } else {
+      width = 480;
+    }
+    let height;
+    if (height$46$opt.$tag === 1) {
+      const _Some = height$46$opt;
+      height = _Some._0;
+    } else {
+      height = 320;
+    }
+    let radius;
+    if (radius$46$opt.$tag === 1) {
+      const _Some = radius$46$opt;
+      radius = _Some._0;
+    } else {
+      radius = 4;
+    }
+    let theme;
+    if (theme$46$opt === undefined) {
+      theme = _M0MP25Xpeng10mooncharts5Theme5light();
+    } else {
+      const _Some = theme$46$opt;
+      theme = _Some;
+    }
+    return _M0FP25Xpeng10mooncharts22scatter__chart_2einner(data, errors, title, width, height, radius, theme);
   }
   function _M0FP25Xpeng10mooncharts12radar__angle(i, n) {
     return -1.5707963267948966 + (i + 0) * 2 * 3.1415926535897931 / (n + 0);
@@ -536,7 +660,7 @@
         const it = items[_];
         const _name = it._0;
         const _color = it._1;
-        _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y - 11 + 2) }, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(11) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(11) }, { _0: "fill", _1: _color }, _M0FP25Xpeng10mooncharts18legend__horizontalN5tupleS1560]));
+        _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y - 11 + 2) }, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(11) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(11) }, { _0: "fill", _1: _color }, _M0FP25Xpeng10mooncharts18legend__horizontalN5tupleS1625]));
         _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(x + 11 + 6, y, _name, 11, "start", "normal", text_color));
         x = x + (17 + (_name.length + 0) * 6.5 + 18);
         _tmp$2 = _ + 1 | 0;
@@ -618,7 +742,7 @@
                 break;
               }
             }
-            _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polygon", [{ _0: "points", _1: ring.val }, _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1561, { _0: "stroke", _1: theme.grid }, _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1562]));
+            _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polygon", [{ _0: "points", _1: ring.val }, _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1626, { _0: "stroke", _1: theme.grid }, _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1627]));
           }
           _tmp$2 = _ + 1 | 0;
           continue;
@@ -631,7 +755,7 @@
         const i = _tmp$3;
         if (i < n) {
           const a = _M0FP25Xpeng10mooncharts12radar__angle(i, n);
-          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("line", [{ _0: "x1", _1: _M0FP25Xpeng10mooncharts3num(cx) }, { _0: "y1", _1: _M0FP25Xpeng10mooncharts3num(cy) }, { _0: "x2", _1: _M0FP25Xpeng10mooncharts3num(cx + radius * _M0FPC14math3cos(a)) }, { _0: "y2", _1: _M0FP25Xpeng10mooncharts3num(cy + radius * _M0FPC14math3sin(a)) }, { _0: "stroke", _1: theme.grid }, _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1563]));
+          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("line", [{ _0: "x1", _1: _M0FP25Xpeng10mooncharts3num(cx) }, { _0: "y1", _1: _M0FP25Xpeng10mooncharts3num(cy) }, { _0: "x2", _1: _M0FP25Xpeng10mooncharts3num(cx + radius * _M0FPC14math3cos(a)) }, { _0: "y2", _1: _M0FP25Xpeng10mooncharts3num(cy + radius * _M0FPC14math3sin(a)) }, { _0: "stroke", _1: theme.grid }, _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1628]));
           const lx = cx + (radius + 16) * _M0FPC14math3cos(a);
           const ly = cy + (radius + 16) * _M0FPC14math3sin(a) + 4;
           const anchor = _M0FPC14math3cos(a) > 0.3 ? "start" : _M0FPC14math3cos(a) < -0.3 ? "end" : "middle";
@@ -667,7 +791,7 @@
               break;
             }
           }
-          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polygon", [{ _0: "points", _1: poly.val }, { _0: "fill", _1: color }, _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1564, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1565]));
+          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polygon", [{ _0: "points", _1: poly.val }, { _0: "fill", _1: color }, _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1629, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts20radar__chart_2einnerN5tupleS1630]));
           _tmp$4 = si + 1 | 0;
           continue;
         } else {
@@ -777,7 +901,7 @@
           _M0FP25Xpeng10mooncharts11emit__slice(body, cx, cy, r, inner, a0, a1, _M0MP25Xpeng10mooncharts5Theme9color__at(theme, i));
           angle = a1;
         }
-        _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(legend_x) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(legend_y - 9) }, _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1566, _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1567, { _0: "fill", _1: _M0MP25Xpeng10mooncharts5Theme9color__at(theme, i) }, _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1568]));
+        _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(legend_x) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(legend_y - 9) }, _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1631, _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1632, { _0: "fill", _1: _M0MP25Xpeng10mooncharts5Theme9color__at(theme, i) }, _M0FP25Xpeng10mooncharts18pie__chart_2einnerN5tupleS1633]));
         _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(legend_x + 18, legend_y, `${_name} (${_M0FP25Xpeng10mooncharts3num(_value)})`, 11, "start", "normal", theme.text));
         legend_y = legend_y + 20;
         _tmp$2 = i + 1 | 0;
@@ -792,7 +916,7 @@
     }
     return _M0FP25Xpeng10mooncharts8document(width, height, body.val);
   }
-  function _M0FP25Xpeng10mooncharts19line__chart_2einner(data, title, width, height, theme) {
+  function _M0FP25Xpeng10mooncharts19line__chart_2einner(data, errors, title, width, height, theme) {
     const top = title === "" ? 16 : 40;
     const plot_w = width - 48 - 16;
     const plot_h = height - top - 40;
@@ -829,7 +953,7 @@
     const _bind = _M0FP25Xpeng10mooncharts6extent(xs);
     const _xlo_raw = _bind._0;
     const _xhi_raw = _bind._1;
-    const _bind$2 = _M0FP25Xpeng10mooncharts6extent(ys);
+    const _bind$2 = _M0FP25Xpeng10mooncharts20extent__with__errors(ys, errors);
     const _ylo_raw = _bind$2._0;
     const _yhi = _bind$2._1;
     const ylo = _ylo_raw > 0 ? 0 : _ylo_raw;
@@ -872,13 +996,29 @@
           break;
         }
       }
-      _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polyline", [{ _0: "points", _1: pts.val }, _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1569, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1570, _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1571, _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1572]));
+      _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polyline", [{ _0: "points", _1: pts.val }, _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1634, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1635, _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1636, _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1637]));
       let _tmp$4 = 0;
       while (true) {
         const i = _tmp$4;
         if (i < n) {
-          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("circle", [{ _0: "cx", _1: _M0FP25Xpeng10mooncharts3num(_M0MPC15array5Array2atGdE(px_arr, i)) }, { _0: "cy", _1: _M0FP25Xpeng10mooncharts3num(_M0MPC15array5Array2atGdE(py_arr, i)) }, _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1573, { _0: "fill", _1: color }]));
+          const e = _M0FP25Xpeng10mooncharts9error__at(errors, i);
+          if (e > 0) {
+            const _bind$5 = _M0MPC15array5Array2atGsE(data, i);
+            const _y = _bind$5._1;
+            _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts10error__bar(_M0MPC15array5Array2atGdE(px_arr, i), _M0FP25Xpeng10mooncharts13scale__linear(_y - e, _axis_lo, _axis_hi, top + plot_h, top), _M0FP25Xpeng10mooncharts13scale__linear(_y + e, _axis_lo, _axis_hi, top + plot_h, top), 8, color));
+          }
           _tmp$4 = i + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+      let _tmp$5 = 0;
+      while (true) {
+        const i = _tmp$5;
+        if (i < n) {
+          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("circle", [{ _0: "cx", _1: _M0FP25Xpeng10mooncharts3num(_M0MPC15array5Array2atGdE(px_arr, i)) }, { _0: "cy", _1: _M0FP25Xpeng10mooncharts3num(_M0MPC15array5Array2atGdE(py_arr, i)) }, _M0FP25Xpeng10mooncharts19line__chart_2einnerN5tupleS1638, { _0: "fill", _1: color }]));
+          _tmp$5 = i + 1 | 0;
           continue;
         } else {
           break;
@@ -890,6 +1030,44 @@
       _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(width / 2, 24, title, 16, "middle", "bold", theme.title));
     }
     return _M0FP25Xpeng10mooncharts8document(width, height, body.val);
+  }
+  function _M0FP25Xpeng10mooncharts11line__chart(data, errors$46$opt, title$46$opt, width$46$opt, height$46$opt, theme$46$opt) {
+    let errors;
+    if (errors$46$opt.$tag === 1) {
+      const _Some = errors$46$opt;
+      errors = _Some._0;
+    } else {
+      errors = [];
+    }
+    let title;
+    if (title$46$opt === undefined) {
+      title = "";
+    } else {
+      const _Some = title$46$opt;
+      title = _Some;
+    }
+    let width;
+    if (width$46$opt.$tag === 1) {
+      const _Some = width$46$opt;
+      width = _Some._0;
+    } else {
+      width = 480;
+    }
+    let height;
+    if (height$46$opt.$tag === 1) {
+      const _Some = height$46$opt;
+      height = _Some._0;
+    } else {
+      height = 320;
+    }
+    let theme;
+    if (theme$46$opt === undefined) {
+      theme = _M0MP25Xpeng10mooncharts5Theme5light();
+    } else {
+      const _Some = theme$46$opt;
+      theme = _Some;
+    }
+    return _M0FP25Xpeng10mooncharts19line__chart_2einner(data, errors, title, width, height, theme);
   }
   function _M0FP25Xpeng10mooncharts26line__chart__multi_2einner(series, title, width, height, theme) {
     const title_h = title === "" ? 8 : 30;
@@ -974,14 +1152,14 @@
             break;
           }
         }
-        _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polyline", [{ _0: "points", _1: pts.val }, _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1574, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1575, _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1576, _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1577]));
+        _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polyline", [{ _0: "points", _1: pts.val }, _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1639, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1640, _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1641, _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1642]));
         const _bind$8 = coords.length;
         let _tmp$4 = 0;
         while (true) {
           const _ = _tmp$4;
           if (_ < _bind$8) {
             const c = coords[_];
-            _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("circle", [{ _0: "cx", _1: _M0FP25Xpeng10mooncharts3num(c._0) }, { _0: "cy", _1: _M0FP25Xpeng10mooncharts3num(c._1) }, _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1578, { _0: "fill", _1: color }]));
+            _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("circle", [{ _0: "cx", _1: _M0FP25Xpeng10mooncharts3num(c._0) }, { _0: "cy", _1: _M0FP25Xpeng10mooncharts3num(c._1) }, _M0FP25Xpeng10mooncharts26line__chart__multi_2einnerN5tupleS1643, { _0: "fill", _1: color }]));
             _tmp$4 = _ + 1 | 0;
             continue;
           } else {
@@ -1019,8 +1197,8 @@
     const sb = _M0MPB13StringBuilder21StringBuilder_2einner(0);
     _L: {
       _L$2: {
-        const _bind = _M0MPC16string6String9get__char(_M0FP25Xpeng10mooncharts4hex2N5charsS283, v$2 / 16 | 0);
-        const _bind$2 = _M0MPC16string6String9get__char(_M0FP25Xpeng10mooncharts4hex2N5charsS283, v$2 % 16 | 0);
+        const _bind = _M0MPC16string6String9get__char(_M0FP25Xpeng10mooncharts4hex2N5charsS287, v$2 / 16 | 0);
+        const _bind$2 = _M0MPC16string6String9get__char(_M0FP25Xpeng10mooncharts4hex2N5charsS287, v$2 % 16 | 0);
         if (_bind === -1) {
           break _L$2;
         } else {
@@ -1044,7 +1222,7 @@
   function _M0FP25Xpeng10mooncharts10hex__digit(c) {
     return c >= 48 && c <= 57 ? c - 48 | 0 : c >= 97 && c <= 102 ? c - 87 | 0 : c >= 65 && c <= 70 ? c - 55 | 0 : 0;
   }
-  function _M0FP25Xpeng10mooncharts17parse__hex__colorN1dS291(s, i) {
+  function _M0FP25Xpeng10mooncharts17parse__hex__colorN1dS295(s, i) {
     const _bind = _M0MPC16string6String9get__char(s, i);
     if (_bind === -1) {
       return 0;
@@ -1056,11 +1234,11 @@
   }
   function _M0FP25Xpeng10mooncharts17parse__hex__color(s) {
     if (s.length !== 7) {
-      return _M0FP25Xpeng10mooncharts17parse__hex__colorN5tupleS1579;
+      return _M0FP25Xpeng10mooncharts17parse__hex__colorN5tupleS1644;
     }
-    return { _0: (Math.imul(_M0FP25Xpeng10mooncharts17parse__hex__colorN1dS291(s, 1), 16) | 0) + _M0FP25Xpeng10mooncharts17parse__hex__colorN1dS291(s, 2) | 0, _1: (Math.imul(_M0FP25Xpeng10mooncharts17parse__hex__colorN1dS291(s, 3), 16) | 0) + _M0FP25Xpeng10mooncharts17parse__hex__colorN1dS291(s, 4) | 0, _2: (Math.imul(_M0FP25Xpeng10mooncharts17parse__hex__colorN1dS291(s, 5), 16) | 0) + _M0FP25Xpeng10mooncharts17parse__hex__colorN1dS291(s, 6) | 0 };
+    return { _0: (Math.imul(_M0FP25Xpeng10mooncharts17parse__hex__colorN1dS295(s, 1), 16) | 0) + _M0FP25Xpeng10mooncharts17parse__hex__colorN1dS295(s, 2) | 0, _1: (Math.imul(_M0FP25Xpeng10mooncharts17parse__hex__colorN1dS295(s, 3), 16) | 0) + _M0FP25Xpeng10mooncharts17parse__hex__colorN1dS295(s, 4) | 0, _2: (Math.imul(_M0FP25Xpeng10mooncharts17parse__hex__colorN1dS295(s, 5), 16) | 0) + _M0FP25Xpeng10mooncharts17parse__hex__colorN1dS295(s, 6) | 0 };
   }
-  function _M0FP25Xpeng10mooncharts11lerp__colorN3mixS281(t, x, y) {
+  function _M0FP25Xpeng10mooncharts11lerp__colorN3mixS285(t, x, y) {
     return _M0MPC16double6Double7to__int(_M0MPC16double6Double5round(x + 0 + ((y - x | 0) + 0) * t));
   }
   function _M0FP25Xpeng10mooncharts11lerp__color(a, b, t) {
@@ -1073,7 +1251,7 @@
     const _br = _bind$2._0;
     const _bg = _bind$2._1;
     const _bb = _bind$2._2;
-    return `#${_M0FP25Xpeng10mooncharts4hex2(_M0FP25Xpeng10mooncharts11lerp__colorN3mixS281(t$2, _ar, _br))}${_M0FP25Xpeng10mooncharts4hex2(_M0FP25Xpeng10mooncharts11lerp__colorN3mixS281(t$2, _ag, _bg))}${_M0FP25Xpeng10mooncharts4hex2(_M0FP25Xpeng10mooncharts11lerp__colorN3mixS281(t$2, _ab, _bb))}`;
+    return `#${_M0FP25Xpeng10mooncharts4hex2(_M0FP25Xpeng10mooncharts11lerp__colorN3mixS285(t$2, _ar, _br))}${_M0FP25Xpeng10mooncharts4hex2(_M0FP25Xpeng10mooncharts11lerp__colorN3mixS285(t$2, _ag, _bg))}${_M0FP25Xpeng10mooncharts4hex2(_M0FP25Xpeng10mooncharts11lerp__colorN3mixS285(t$2, _ab, _bb))}`;
   }
   function _M0FP25Xpeng10mooncharts15heatmap_2einner(rows, cols, values, title, width, height, low_color, high_color, theme) {
     const top = title === "" ? 16 : 40;
@@ -1137,7 +1315,7 @@
               const t = (v - lo) / span;
               const x = 84 + cw * (c + 0);
               const y = top + ch * (r + 0);
-              _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(x + 1) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y + 1) }, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(cw - 2) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(ch - 2) }, { _0: "fill", _1: _M0FP25Xpeng10mooncharts11lerp__color(low_color, high_color, t) }, _M0FP25Xpeng10mooncharts15heatmap_2einnerN5tupleS1580]));
+              _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(x + 1) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y + 1) }, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(cw - 2) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(ch - 2) }, { _0: "fill", _1: _M0FP25Xpeng10mooncharts11lerp__color(low_color, high_color, t) }, _M0FP25Xpeng10mooncharts15heatmap_2einnerN5tupleS1645]));
               const text_color = t > 0.55 ? "#ffffff" : "#333333";
               _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(x + cw / 2, y + ch / 2 + 4, _M0FP25Xpeng10mooncharts3num(v), 11, "middle", "normal", text_color));
               _tmp$3 = c + 1 | 0;
@@ -1213,7 +1391,7 @@
           const _value = _bind$3._1;
           const bar_w = _M0FP25Xpeng10mooncharts13scale__linear(_value, _axis_lo, _axis_hi, 0, plot_w);
           const y = top + slot * (i + 0) + (slot - bar_h) / 2;
-          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(90) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(bar_w) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(bar_h) }, { _0: "fill", _1: _M0MP25Xpeng10mooncharts5Theme9color__at(theme, i) }, _M0FP25Xpeng10mooncharts30bar__chart__horizontal_2einnerN5tupleS1581]));
+          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(90) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(bar_w) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(bar_h) }, { _0: "fill", _1: _M0MP25Xpeng10mooncharts5Theme9color__at(theme, i) }, _M0FP25Xpeng10mooncharts30bar__chart__horizontal_2einnerN5tupleS1646]));
           _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(82, y + bar_h / 2 + 4, _name, 11, "end", "normal", theme.text));
           _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(90 + bar_w + 6, y + bar_h / 2 + 4, _M0FP25Xpeng10mooncharts3num(_value), 11, "start", "normal", theme.text));
           _tmp$2 = i + 1 | 0;
@@ -1229,7 +1407,7 @@
     }
     return _M0FP25Xpeng10mooncharts8document(width, height, body.val);
   }
-  function _M0FP25Xpeng10mooncharts18bar__chart_2einner(data, title, width, height, theme) {
+  function _M0FP25Xpeng10mooncharts18bar__chart_2einner(data, errors, title, width, height, theme) {
     const top = title === "" ? 16 : 40;
     const plot_w = width - 48 - 16;
     const plot_h = height - top - 48;
@@ -1248,7 +1426,7 @@
       }
     }
     const values = _p;
-    const _bind = _M0FP25Xpeng10mooncharts6extent(values);
+    const _bind = _M0FP25Xpeng10mooncharts20extent__with__errors(values, errors);
     const _raw_lo = _bind._0;
     const _raw_hi = _bind._1;
     const lo = _raw_lo > 0 ? 0 : _raw_lo;
@@ -1277,8 +1455,14 @@
           const val_y = _M0FP25Xpeng10mooncharts13scale__linear(_value, _axis_lo, _axis_hi, top + plot_h, top);
           const y = _value >= 0 ? val_y : zero_y;
           const bar_h = _value >= 0 ? zero_y - val_y : val_y - zero_y;
-          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(bar_w) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(bar_h) }, { _0: "fill", _1: _M0MP25Xpeng10mooncharts5Theme9color__at(theme, i) }, _M0FP25Xpeng10mooncharts18bar__chart_2einnerN5tupleS1590]));
-          const label_y = _value >= 0 ? y - 6 : y + bar_h + 14;
+          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(bar_w) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(bar_h) }, { _0: "fill", _1: _M0MP25Xpeng10mooncharts5Theme9color__at(theme, i) }, _M0FP25Xpeng10mooncharts18bar__chart_2einnerN5tupleS1655]));
+          const e = _M0FP25Xpeng10mooncharts9error__at(errors, i);
+          if (e > 0) {
+            _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts10error__bar(x + bar_w / 2, _M0FP25Xpeng10mooncharts13scale__linear(_value - e, _axis_lo, _axis_hi, top + plot_h, top), _M0FP25Xpeng10mooncharts13scale__linear(_value + e, _axis_lo, _axis_hi, top + plot_h, top), bar_w * 0.4, theme.text));
+          }
+          const tip = _value >= 0 ? _value + e : _value - e;
+          const tip_y = _M0FP25Xpeng10mooncharts13scale__linear(tip, _axis_lo, _axis_hi, top + plot_h, top);
+          const label_y = _value >= 0 ? tip_y - 6 : tip_y + 14;
           _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(x + bar_w / 2, label_y, _M0FP25Xpeng10mooncharts3num(_value), 11, "middle", "normal", theme.text));
           _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(x + bar_w / 2, top + plot_h + 16, _name, 11, "middle", "normal", theme.text));
           _tmp$2 = i + 1 | 0;
@@ -1293,6 +1477,44 @@
       _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts13label_2einner(width / 2, 24, title, 16, "middle", "bold", theme.title));
     }
     return _M0FP25Xpeng10mooncharts8document(width, height, body.val);
+  }
+  function _M0FP25Xpeng10mooncharts10bar__chart(data, errors$46$opt, title$46$opt, width$46$opt, height$46$opt, theme$46$opt) {
+    let errors;
+    if (errors$46$opt.$tag === 1) {
+      const _Some = errors$46$opt;
+      errors = _Some._0;
+    } else {
+      errors = [];
+    }
+    let title;
+    if (title$46$opt === undefined) {
+      title = "";
+    } else {
+      const _Some = title$46$opt;
+      title = _Some;
+    }
+    let width;
+    if (width$46$opt.$tag === 1) {
+      const _Some = width$46$opt;
+      width = _Some._0;
+    } else {
+      width = 480;
+    }
+    let height;
+    if (height$46$opt.$tag === 1) {
+      const _Some = height$46$opt;
+      height = _Some._0;
+    } else {
+      height = 320;
+    }
+    let theme;
+    if (theme$46$opt === undefined) {
+      theme = _M0MP25Xpeng10mooncharts5Theme5light();
+    } else {
+      const _Some = theme$46$opt;
+      theme = _Some;
+    }
+    return _M0FP25Xpeng10mooncharts18bar__chart_2einner(data, errors, title, width, height, theme);
   }
   function _M0FP25Xpeng10mooncharts27bar__chart__grouped_2einner(categories, series, title, width, height, theme) {
     const title_h = title === "" ? 8 : 30;
@@ -1356,7 +1578,7 @@
               const bar_h = value / _axis_hi * plot_h;
               const x = group_x + bar_w * (s + 0);
               const y = top + plot_h - bar_h;
-              _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(bar_w) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(bar_h) }, { _0: "fill", _1: _M0MP25Xpeng10mooncharts5Theme9color__at(theme, s) }, _M0FP25Xpeng10mooncharts27bar__chart__grouped_2einnerN5tupleS1591]));
+              _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("rect", [{ _0: "x", _1: _M0FP25Xpeng10mooncharts3num(x) }, { _0: "y", _1: _M0FP25Xpeng10mooncharts3num(y) }, { _0: "width", _1: _M0FP25Xpeng10mooncharts3num(bar_w) }, { _0: "height", _1: _M0FP25Xpeng10mooncharts3num(bar_h) }, { _0: "fill", _1: _M0MP25Xpeng10mooncharts5Theme9color__at(theme, s) }, _M0FP25Xpeng10mooncharts27bar__chart__grouped_2einnerN5tupleS1656]));
               _tmp$3 = s + 1 | 0;
               continue;
             } else {
@@ -1573,13 +1795,13 @@
       _M0IPB13StringBuilderPB6Logger13write__string(poly, `${_M0FP25Xpeng10mooncharts3num(_M0MPC15array5Array2atGdE(px_arr, 0))},${_M0FP25Xpeng10mooncharts3num(baseline)} `);
       _M0IPB13StringBuilderPB6Logger13write__string(poly, line_pts.val);
       _M0IPB13StringBuilderPB6Logger13write__string(poly, ` ${_M0FP25Xpeng10mooncharts3num(_M0MPC15array5Array2atGdE(px_arr, n - 1 | 0))},${_M0FP25Xpeng10mooncharts3num(baseline)}`);
-      _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polygon", [{ _0: "points", _1: poly.val }, { _0: "fill", _1: color }, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1592]));
-      _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polyline", [{ _0: "points", _1: line_pts.val }, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1593, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1594, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1595, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1596]));
+      _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polygon", [{ _0: "points", _1: poly.val }, { _0: "fill", _1: color }, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1657]));
+      _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polyline", [{ _0: "points", _1: line_pts.val }, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1658, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1659, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1660, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1661]));
       let _tmp$4 = 0;
       while (true) {
         const i = _tmp$4;
         if (i < n) {
-          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("circle", [{ _0: "cx", _1: _M0FP25Xpeng10mooncharts3num(_M0MPC15array5Array2atGdE(px_arr, i)) }, { _0: "cy", _1: _M0FP25Xpeng10mooncharts3num(_M0MPC15array5Array2atGdE(py_arr, i)) }, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1597, { _0: "fill", _1: color }]));
+          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("circle", [{ _0: "cx", _1: _M0FP25Xpeng10mooncharts3num(_M0MPC15array5Array2atGdE(px_arr, i)) }, { _0: "cy", _1: _M0FP25Xpeng10mooncharts3num(_M0MPC15array5Array2atGdE(py_arr, i)) }, _M0FP25Xpeng10mooncharts19area__chart_2einnerN5tupleS1662, { _0: "fill", _1: color }]));
           _tmp$4 = i + 1 | 0;
           continue;
         } else {
@@ -1595,15 +1817,15 @@
   }
   function _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN2pxS33(_env, x) {
     const _xlo = _env._2;
-    const plot_w = _env._1;
-    const _xhi = _env._0;
+    const _xhi = _env._1;
+    const plot_w = _env._0;
     return _M0FP25Xpeng10mooncharts13scale__linear(x, _xlo, _xhi, 48, 48 + plot_w);
   }
   function _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN2pyS35(_env, v) {
-    const top = _env._3;
-    const plot_h = _env._2;
-    const _axis_hi = _env._1;
-    const _axis_lo = _env._0;
+    const _axis_lo = _env._3;
+    const top = _env._2;
+    const plot_h = _env._1;
+    const _axis_hi = _env._0;
     return _M0FP25Xpeng10mooncharts13scale__linear(v, _axis_lo, _axis_hi, top + plot_h, top);
   }
   function _M0FP25Xpeng10mooncharts28area__chart__stacked_2einner(xs, series, title, width, height, theme) {
@@ -1659,8 +1881,8 @@
     _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts7y__axis(theme, 48, top, plot_w, plot_h, _axis_lo, _axis_hi, _ticks));
     _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts15x__axis_2einner(theme, 48, top, plot_w, plot_h, _xlo, _xhi, _x_ticks, false));
     if (n > 0 && n_ser > 0) {
-      const _env = { _0: _xhi, _1: plot_w, _2: _xlo };
-      const _env$2 = { _0: _axis_lo, _1: _axis_hi, _2: plot_h, _3: top };
+      const _env = { _0: plot_w, _1: _xhi, _2: _xlo };
+      const _env$2 = { _0: _axis_hi, _1: plot_h, _2: top, _3: _axis_lo };
       const prev = [];
       let _tmp$2 = 0;
       while (true) {
@@ -1722,8 +1944,8 @@
               break;
             }
           }
-          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polygon", [{ _0: "points", _1: poly.val }, { _0: "fill", _1: color }, _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1598]));
-          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polyline", [{ _0: "points", _1: line_pts.val }, _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1599, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1600]));
+          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polygon", [{ _0: "points", _1: poly.val }, { _0: "fill", _1: color }, _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1663]));
+          _M0IPB13StringBuilderPB6Logger13write__string(body, _M0FP25Xpeng10mooncharts4elem("polyline", [{ _0: "points", _1: line_pts.val }, _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1664, { _0: "stroke", _1: color }, _M0FP25Xpeng10mooncharts28area__chart__stacked_2einnerN5tupleS1665]));
           let _tmp$7 = 0;
           while (true) {
             const i = _tmp$7;
@@ -1810,13 +2032,13 @@
     const two = [{ _0: "Series 1", _1: values }, { _0: "Series 2", _1: values2 }];
     switch (kind) {
       case "line": {
-        return _M0FP25Xpeng10mooncharts19line__chart_2einner(xy, "", 640, 380, theme);
+        return _M0FP25Xpeng10mooncharts11line__chart(xy, _M0DTPC16option6OptionGRPB5ArrayGdEE4None__, undefined, _M0FP35Xpeng10mooncharts3web6renderN6constrS50, _M0FP35Xpeng10mooncharts3web6renderN6constrS51, theme);
       }
       case "area": {
         return _M0FP25Xpeng10mooncharts19area__chart_2einner(xy, "", 640, 380, theme);
       }
       case "scatter": {
-        return _M0FP25Xpeng10mooncharts22scatter__chart_2einner(xy, "", 640, 380, 4, theme);
+        return _M0FP25Xpeng10mooncharts14scatter__chart(xy, _M0DTPC16option6OptionGRPB5ArrayGdEE4None__, undefined, _M0FP35Xpeng10mooncharts3web6renderN6constrS52, _M0FP35Xpeng10mooncharts3web6renderN6constrS53, _M0DTPC16option6OptionGdE4None__, theme);
       }
       case "pie": {
         return _M0FP25Xpeng10mooncharts18pie__chart_2einner(data, "", 640, 380, 0, theme);
@@ -1872,7 +2094,7 @@
         return _M0FP25Xpeng10mooncharts15heatmap_2einner(["Row 1", "Row 2"], ["Col 1", "Col 2", "Col 3"], m, "", 640, 380, "#e6f1fb", "#185fa5", theme);
       }
       default: {
-        return _M0FP25Xpeng10mooncharts18bar__chart_2einner(data, "", 640, 380, theme);
+        return _M0FP25Xpeng10mooncharts10bar__chart(data, _M0DTPC16option6OptionGRPB5ArrayGdEE4None__, undefined, _M0FP35Xpeng10mooncharts3web6renderN6constrS54, _M0FP35Xpeng10mooncharts3web6renderN6constrS55, theme);
       }
     }
   }
