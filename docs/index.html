@@ -3,96 +3,201 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>mooncharts — interactive demo</title>
+<title>mooncharts — SVG charts in pure MoonBit, live in your browser</title>
 <style>
-  :root { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
-  body { margin: 0; padding: 28px; color: #222; background: #fafafa; }
-  h1 { margin: 0 0 4px; font-size: 24px; }
-  h1 span { color: #4e79a7; font-weight: 500; }
-  p.lead { margin: 0 0 20px; color: #555; max-width: 640px; }
-  .panel { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
-  .controls { background: #fff; border: 1px solid #e6e6e6; border-radius: 12px;
-    padding: 16px 18px; width: 270px; }
-  .controls h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em;
-    color: #888; margin: 0 0 8px; }
-  .types { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-  .types button { border: 1px solid #d8d8d8; background: #fff; border-radius: 8px;
-    padding: 5px 11px; font-size: 13px; cursor: pointer; }
-  .types button.active { background: #4e79a7; color: #fff; border-color: #4e79a7; }
-  .row { display: flex; align-items: center; gap: 10px; margin: 7px 0; }
-  .row label { width: 20px; color: #555; font-size: 13px; }
-  .row input[type=range] { flex: 1; }
-  .row output { width: 34px; text-align: right; font-variant-numeric: tabular-nums;
-    font-size: 13px; color: #333; }
-  .toggle { display: flex; align-items: center; gap: 8px; margin-top: 14px;
-    font-size: 14px; color: #333; }
-  .chartwrap { background: #fff; border: 1px solid #e6e6e6; border-radius: 12px;
-    padding: 12px; }
-  .chartwrap svg { max-width: 100%; height: auto; display: block; }
-  .chartwrap svg rect, .chartwrap svg circle, .chartwrap svg path,
-  .chartwrap svg polygon { transition: opacity .12s ease; }
-  footer { margin-top: 18px; color: #888; font-size: 13px; }
-  footer code { background: #eee; padding: 1px 5px; border-radius: 4px; }
-  #tip { position: fixed; pointer-events: none; display: none; z-index: 10;
-    background: #222; color: #fff; font-size: 12px; padding: 4px 8px;
-    border-radius: 6px; transform: translate(0, -4px); }
+  :root {
+    --bg: #f4f6f9; --card: #ffffff; --border: #e3e6ec; --text: #1c2330;
+    --muted: #5b6472; --accent: #4e79a7; --accent-text: #ffffff;
+    --code-bg: #f0f2f6; --shadow: 0 1px 3px rgba(16, 24, 40, .06);
+  }
+  body.dark {
+    --bg: #12121c; --card: #1e1e2e; --border: #32324a; --text: #e8e9f2;
+    --muted: #9a9fb5; --accent: #6ea8e0; --accent-text: #10131c;
+    --code-bg: #16162396; --shadow: 0 1px 3px rgba(0, 0, 0, .4);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 0 20px 40px; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    transition: background .3s ease, color .3s ease; }
+  header { max-width: 1060px; margin: 0 auto; padding: 34px 0 20px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand svg { flex: none; }
+  .brand h1 { margin: 0; font-size: 27px; letter-spacing: -.02em; }
+  .brand h1 em { font-style: normal; color: var(--accent); }
+  .tagline { margin: 8px 0 14px; color: var(--muted); font-size: 15px; max-width: 720px; line-height: 1.55; }
+  .tagline strong { color: var(--text); }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .links a { display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    color: var(--text); background: var(--card); border: 1px solid var(--border);
+    border-radius: 999px; padding: 5px 13px; font-size: 13px; box-shadow: var(--shadow); }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links a .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  main { max-width: 1060px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: var(--shadow); transition: background .3s ease, border-color .3s ease; }
+  .controls { width: 290px; padding: 18px; flex: none; }
+  .controls h2 { font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--muted); margin: 16px 0 8px; font-weight: 600; }
+  .controls h2:first-child { margin-top: 0; }
+  .types { display: flex; flex-wrap: wrap; gap: 6px; }
+  .types button { border: 1px solid var(--border); background: transparent; color: var(--text);
+    border-radius: 8px; padding: 5px 10px; font-size: 12.5px; cursor: pointer; transition: all .15s; }
+  .types button:hover { border-color: var(--accent); }
+  .types button.active { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+  .row { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+  .row label { width: 18px; color: var(--muted); font-size: 13px; }
+  .row input[type=range] { flex: 1; accent-color: var(--accent); }
+  .row output { width: 32px; text-align: right; font-variant-numeric: tabular-nums;
+    font-size: 12.5px; color: var(--text); }
+  .datatools { display: flex; gap: 8px; margin-top: 10px; }
+  .btn { border: 1px solid var(--border); background: transparent; color: var(--text);
+    border-radius: 8px; padding: 6px 12px; font-size: 12.5px; cursor: pointer; transition: all .15s; }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  select.btn { appearance: auto; }
+  .switch { display: flex; align-items: center; justify-content: space-between; margin-top: 18px;
+    font-size: 14px; }
+  .switch input { appearance: none; width: 40px; height: 22px; border-radius: 999px;
+    background: var(--border); position: relative; cursor: pointer; transition: background .2s; outline: none; }
+  .switch input:checked { background: var(--accent); }
+  .switch input::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px;
+    border-radius: 50%; background: #fff; transition: transform .2s; }
+  .switch input:checked::after { transform: translateX(18px); }
+  .stage { flex: 1; min-width: 480px; display: flex; flex-direction: column; gap: 18px; }
+  .chartcard { padding: 14px; }
+  .toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .stat { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .stat b { color: var(--accent); font-weight: 600; }
+  #chart svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+  #chart svg rect, #chart svg circle, #chart svg path, #chart svg polygon { transition: opacity .12s ease; }
+  .codecard { overflow: hidden; }
+  .codebar { display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 14px; border-bottom: 1px solid var(--border); }
+  .codebar span { font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+  pre { margin: 0; padding: 14px 16px; font: 12.5px/1.6 ui-monospace, "Cascadia Code", Consolas, monospace;
+    color: var(--text); background: var(--code-bg); overflow-x: auto; white-space: pre; }
+  .k { color: #b0619a; } .f { color: var(--accent); } .s { color: #3a8a52; } .n { color: #b26a3f; }
+  body.dark .k { color: #d98cc0; } body.dark .s { color: #7fc98f; } body.dark .n { color: #e0a370; }
+  footer { max-width: 1060px; margin: 26px auto 0; color: var(--muted); font-size: 13px;
+    display: flex; flex-wrap: wrap; gap: 6px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  #tip { position: fixed; pointer-events: none; display: none; z-index: 10; background: #222b3a;
+    color: #fff; font-size: 12px; padding: 4px 9px; border-radius: 6px; transform: translate(0, -4px); }
+  @media (max-width: 860px) { .stage { min-width: 0; } .controls { width: 100%; } }
 </style>
 </head>
 <body>
-  <h1>mooncharts <span>· running live in your browser</span></h1>
-  <p class="lead">Every chart below is generated by <strong>MoonBit code compiled to
-  JavaScript</strong> — the same library you can <code>moon add Xpeng/mooncharts</code>.
-  Switch chart types, drag the sliders, or flip to the dark theme and watch it
-  re-render — with entrance animations — instantly.</p>
+  <header>
+    <div class="brand">
+      <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <circle cx="19" cy="19" r="17" fill="none" stroke="#4e79a7" stroke-width="3.4"
+          stroke-dasharray="66 41" stroke-dashoffset="-8" stroke-linecap="round" />
+        <rect x="12" y="18" width="4" height="9" rx="1.4" fill="#f28e2b" />
+        <rect x="18" y="12" width="4" height="15" rx="1.4" fill="#4e79a7" />
+        <rect x="24" y="15" width="4" height="12" rx="1.4" fill="#76b7b2" />
+      </svg>
+      <h1>moon<em>charts</em></h1>
+    </div>
+    <p class="tagline"><strong>SVG charts in pure MoonBit — 纯 MoonBit 实现的 SVG 图表库。</strong>
+      This page compiles the library to JavaScript and renders every chart
+      <strong>live in your browser</strong>: switch types, drag the data, flip the theme,
+      and watch the render time.</p>
+    <nav class="links">
+      <a href="https://github.com/pxgt/mooncharts"><span class="dot"></span>GitHub</a>
+      <a href="https://mooncakes.io/docs/Xpeng/mooncharts"><span class="dot"></span>mooncakes · v0.5.0</a>
+      <a href="https://github.com/pxgt/mooncharts/blob/main/docs/api.md"><span class="dot"></span>API reference</a>
+      <a href="https://github.com/pxgt/mooncharts/blob/main/docs/devlog.md"><span class="dot"></span>Dev log</a>
+    </nav>
+  </header>
 
-  <div class="panel">
-    <div class="controls">
-      <h2>Chart type</h2>
-      <div class="types" id="types"></div>
+  <main>
+    <aside class="controls card">
+      <h2>Basic</h2>
+      <div class="types" data-group="basic"></div>
+      <h2>Multi-series</h2>
+      <div class="types" data-group="series"></div>
+      <h2>Matrix</h2>
+      <div class="types" data-group="matrix"></div>
       <h2>Data</h2>
       <div id="sliders"></div>
-      <label class="toggle"><input type="checkbox" id="dark" /> Dark theme</label>
-    </div>
-    <div class="chartwrap" id="chart"></div>
-  </div>
+      <div class="datatools">
+        <select class="btn" id="preset" aria-label="preset dataset">
+          <option value="week">Weekly traffic</option>
+          <option value="growth">Steady growth</option>
+          <option value="volatile">Volatile</option>
+        </select>
+        <button class="btn" id="shuffle">🎲 Randomize</button>
+      </div>
+      <label class="switch">Dark theme <input type="checkbox" id="dark" /></label>
+    </aside>
 
-  <footer>Powered by <code>Xpeng/mooncharts</code> · <a
-    href="https://github.com/pxgt/mooncharts">source on GitHub</a></footer>
+    <section class="stage">
+      <div class="chartcard card">
+        <div class="toolbar">
+          <span class="stat">rendered in <b id="ms">…</b> by MoonBit → JS</span>
+          <button class="btn" id="download">⬇ SVG</button>
+        </div>
+        <div id="chart"></div>
+      </div>
+      <div class="codecard card">
+        <div class="codebar"><span>THE SAME CALL IN MOONBIT</span>
+          <button class="btn" id="copy">Copy</button></div>
+        <pre id="code"></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Apache-2.0 ·</span>
+    <span><code>moon add Xpeng/mooncharts</code> ·</span>
+    <span>an entry of the 2026 MoonBit open-source contest ·</span>
+    <a href="https://gitlink.org.cn/Xpeng/mooncharts">Gitlink mirror</a>
+  </footer>
 
   <div id="tip"></div>
 
   <script src="mooncharts.js"></script>
   <script>
     const labels = ["A", "B", "C", "D", "E", "F"];
-    let values = [120, 200, 150, 90, 240, 60];
+    const presets = {
+      week: [120, 200, 150, 90, 240, 60],
+      growth: [40, 80, 120, 160, 200, 240],
+      volatile: [200, 60, 180, 90, 220, 45],
+    };
+    let values = presets.week.slice();
     let kind = "bar";
     let dark = false;
 
+    const groups = {
+      basic: ["bar", "hbar", "line", "area", "scatter", "pie", "donut"],
+      series: ["multiline", "grouped", "stacked", "stackedarea", "radar"],
+      matrix: ["heatmap"],
+    };
     const chart = document.getElementById("chart");
     const tip = document.getElementById("tip");
-    const types = ["bar", "line", "area", "scatter", "pie", "donut",
-                   "multiline", "grouped", "stacked", "stackedarea", "radar",
-                   "hbar", "heatmap"];
+    const msEl = document.getElementById("ms");
 
-    const typesEl = document.getElementById("types");
-    types.forEach((t) => {
-      const b = document.createElement("button");
-      b.textContent = t;
-      b.className = t === kind ? "active" : "";
-      b.onclick = () => {
-        kind = t;
-        [...typesEl.children].forEach((c) => c.classList.toggle("active", c.textContent === t));
-        draw(true);
-      };
-      typesEl.appendChild(b);
-    });
+    for (const [g, kinds] of Object.entries(groups)) {
+      const el = document.querySelector('[data-group="' + g + '"]');
+      kinds.forEach((t) => {
+        const b = document.createElement("button");
+        b.textContent = t;
+        b.className = t === kind ? "active" : "";
+        b.onclick = () => {
+          kind = t;
+          document.querySelectorAll(".types button").forEach((c) =>
+            c.classList.toggle("active", c.textContent === t));
+          draw(true);
+        };
+        el.appendChild(b);
+      });
+    }
 
     const slidersEl = document.getElementById("sliders");
+    const ranges = [];
     labels.forEach((name, i) => {
       const row = document.createElement("div");
       row.className = "row";
-      row.innerHTML =
-        '<label>' + name + '</label>' +
+      row.innerHTML = '<label>' + name + '</label>' +
         '<input type="range" min="0" max="300" step="5" value="' + values[i] + '">' +
         '<output>' + values[i] + '</output>';
       const range = row.querySelector("input");
@@ -102,13 +207,82 @@
         out.textContent = range.value;
         draw(false);
       });
+      ranges.push({ range, out });
       slidersEl.appendChild(row);
+    });
+
+    function setValues(v) {
+      values = v.slice();
+      ranges.forEach((r, i) => { r.range.value = values[i]; r.out.textContent = values[i]; });
+      draw(true);
+    }
+    document.getElementById("preset").addEventListener("change", (e) => setValues(presets[e.target.value]));
+    document.getElementById("shuffle").addEventListener("click", () => {
+      setValues(labels.map(() => Math.round(Math.random() * 56) * 5 + 20));
     });
 
     document.getElementById("dark").addEventListener("change", (e) => {
       dark = e.target.checked;
+      document.body.classList.toggle("dark", dark);
       draw(true);
     });
+
+    document.getElementById("download").addEventListener("click", () => {
+      const svg = chart.querySelector("svg");
+      if (!svg) return;
+      const blob = new Blob([svg.outerHTML], { type: "image/svg+xml" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "mooncharts-" + kind + ".svg";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    document.getElementById("copy").addEventListener("click", (e) => {
+      navigator.clipboard.writeText(document.getElementById("code").textContent).then(() => {
+        e.target.textContent = "Copied!";
+        setTimeout(() => { e.target.textContent = "Copy"; }, 1200);
+      });
+    });
+
+    function catData() {
+      return labels.map((l, i) => '("' + l + '", ' + values[i] + '.0)').join(", ");
+    }
+    function xyData() {
+      return values.map((v, i) => "(" + i + ".0, " + v + ".0)").join(", ");
+    }
+    function moonbitFor() {
+      const theme = dark ? ",\n  theme=@mooncharts.Theme::dark()" : "";
+      const cat = "[" + catData() + "]";
+      const xy = "[" + xyData() + "]";
+      const lblArr = "[" + labels.map((l) => '"' + l + '"').join(", ") + "]";
+      const valArr = "[" + values.map((v) => v + ".0").join(", ") + "]";
+      const two = '[("Series 1", ' + valArr + '), ("Series 2", derived)]';
+      switch (kind) {
+        case "bar": return "let svg = @mooncharts.bar_chart(\n  " + cat + theme + "\n)";
+        case "hbar": return "let svg = @mooncharts.bar_chart_horizontal(\n  " + cat + theme + "\n)";
+        case "line": return "let svg = @mooncharts.line_chart(\n  " + xy + theme + "\n)";
+        case "area": return "let svg = @mooncharts.area_chart(\n  " + xy + theme + "\n)";
+        case "scatter": return "let svg = @mooncharts.scatter_chart(\n  " + xy + theme + "\n)";
+        case "pie": return "let svg = @mooncharts.pie_chart(\n  " + cat + theme + "\n)";
+        case "donut": return "let svg = @mooncharts.pie_chart(\n  " + cat + ",\n  donut=0.55" + theme + "\n)";
+        case "multiline": return "let svg = @mooncharts.line_chart_multi(\n  [(\"Series 1\", " + xy + "), (\"Series 2\", derived)]" + theme + "\n)";
+        case "grouped": return "let svg = @mooncharts.bar_chart_grouped(\n  " + lblArr + ",\n  " + two + theme + "\n)";
+        case "stacked": return "let svg = @mooncharts.bar_chart_stacked(\n  " + lblArr + ",\n  " + two + theme + "\n)";
+        case "stackedarea": return "let svg = @mooncharts.area_chart_stacked(\n  [0.0, 1.0, 2.0, 3.0, 4.0, 5.0],\n  " + two + theme + "\n)";
+        case "radar": return "let svg = @mooncharts.radar_chart(\n  " + lblArr + ",\n  " + two + theme + "\n)";
+        case "heatmap": return "let svg = @mooncharts.heatmap(\n  rows, cols, values" + theme + "\n)";
+      }
+      return "";
+    }
+    function highlight(src) {
+      return src
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+        .replace(/(".*?")/g, '<span class="s">$1</span>')
+        .replace(/\b(\d+\.\d+|\d+)\b/g, '<span class="n">$1</span>')
+        .replace(/\b(let)\b/g, '<span class="k">$1</span>')
+        .replace(/(@mooncharts\.\w+|Theme::\w+)/g, '<span class="f">$1</span>');
+    }
 
     function selectorForKind() {
       if (kind === "pie" || kind === "donut") return "path";
@@ -116,7 +290,6 @@
       if (kind === "scatter") return "circle";
       return 'rect[rx="2"]';
     }
-
     function attachHover() {
       chart.querySelectorAll(selectorForKind()).forEach((el, i) => {
         if (i >= labels.length) return;
@@ -138,9 +311,7 @@
     function isBackground(r) {
       return r.getAttribute("x") === "0" && r.getAttribute("y") === "0";
     }
-
     function animateIn() {
-      // Bars grow up from the baseline.
       chart.querySelectorAll("rect").forEach((r) => {
         if (isBackground(r)) return;
         r.style.transformBox = "fill-box";
@@ -148,12 +319,10 @@
         r.animate([{ transform: "scaleY(0)" }, { transform: "scaleY(1)" }],
           { duration: 500, easing: "cubic-bezier(.2,.8,.2,1)" });
       });
-      // Points / slices / radar polygons fade in with a slight stagger.
       chart.querySelectorAll("circle, path, polygon").forEach((el, i) => {
         el.animate([{ opacity: 0 }, { opacity: 1 }],
           { duration: 350, delay: Math.min(i * 25, 500), easing: "ease-out", fill: "backwards" });
       });
-      // Lines draw themselves on.
       chart.querySelectorAll("polyline").forEach((pl) => {
         const len = pl.getTotalLength ? pl.getTotalLength() : 0;
         if (!len) return;
@@ -163,8 +332,17 @@
       });
     }
 
+    let msSamples = [];
     function draw(animate) {
-      chart.innerHTML = globalThis.render(kind, labels, values, dark);
+      const t0 = performance.now();
+      const svg = globalThis.render(kind, labels, values, dark);
+      const t1 = performance.now();
+      chart.innerHTML = svg;
+      msSamples.push(t1 - t0);
+      if (msSamples.length > 8) msSamples.shift();
+      const avg = msSamples.reduce((a, b) => a + b, 0) / msSamples.length;
+      msEl.textContent = avg < 1 ? (avg * 1000).toFixed(0) + " µs" : avg.toFixed(2) + " ms";
+      document.getElementById("code").innerHTML = highlight(moonbitFor());
       attachHover();
       if (animate) animateIn();
     }
