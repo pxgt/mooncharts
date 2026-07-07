@@ -36,9 +36,10 @@ anchors at zero when all values are positive.
 
 | Function | Signature highlights | Notes |
 |----------|---------------------|-------|
-| `line_chart(points, errors?)` | `errors? : Array[Double]` | polyline with point markers; optional ±error bars |
-| `area_chart(points)` | — | line with translucent fill down to the baseline |
-| `scatter_chart(points, errors?, radius?)` | `radius? : Double = 4.0` | dots; optional ±error bars |
+| `line_chart(points, errors?, smooth?, x_title?, y_title?)` | `errors? : Array[Double]`, `smooth? : Bool` | polyline (or Catmull-Rom curve) with markers; optional ±error bars and axis titles |
+| `area_chart(points, smooth?, x_title?, y_title?)` | `smooth? : Bool` | line with translucent fill down to the baseline |
+| `scatter_chart(points, errors?, x_title?, y_title?, radius?)` | `radius? : Double = 4.0` | dots; optional ±error bars and axis titles |
+| `bubble_chart(points, max_radius?)` | `Array[(Double, Double, Double)]` | third value maps to dot **area**; largest dot = `max_radius` px |
 | `line_chart_multi(series)` | `Array[(String, Array[(Double, Double)])]` | several named lines + legend |
 | `area_chart_stacked(xs, series)` | `Array[Double]` + `Array[(String, Array[Double])]` | layers accumulate upward + legend |
 
@@ -49,6 +50,8 @@ anchors at zero when all values are positive.
 | `histogram(values, bins?)` | `bins? : Int = 10` | raw samples binned over a nicely rounded range |
 | `box_plot(data)` | `Array[(String, Array[Double])]` | quartile box, median line, 1.5×IQR whiskers, outlier dots |
 | `heatmap(rows, cols, values, low_color?, high_color?)` | `values : Array[Array[Double]]` | cells colored by linear interpolation between the two scale colors |
+| `candlestick_chart(data, up_color?, down_color?)` | `Array[(String, Double, Double, Double, Double)]` | `(label, open, high, low, close)`; wick spans low..high |
+| `waterfall_chart(data, show_total?, total_label?, up_color?, down_color?)` | `Array[(String, Double)]` | signed deltas float at the running total with dashed connectors |
 
 ## Theming
 

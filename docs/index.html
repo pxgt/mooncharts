@@ -115,7 +115,7 @@
       <div class="types" data-group="basic"></div>
       <h2>Multi-series</h2>
       <div class="types" data-group="series"></div>
-      <h2>Matrix</h2>
+      <h2>Special</h2>
       <div class="types" data-group="matrix"></div>
       <h2>Data</h2>
       <div id="sliders"></div>
@@ -168,9 +168,9 @@
     let dark = false;
 
     const groups = {
-      basic: ["bar", "hbar", "line", "area", "scatter", "pie", "donut"],
+      basic: ["bar", "hbar", "line", "smoothline", "area", "scatter", "bubble", "pie", "donut"],
       series: ["multiline", "grouped", "stacked", "stackedarea", "radar"],
-      matrix: ["heatmap"],
+      matrix: ["heatmap", "candlestick", "waterfall"],
     };
     const chart = document.getElementById("chart");
     const tip = document.getElementById("tip");

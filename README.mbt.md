@@ -21,14 +21,17 @@ the browser or generate static SVG on the backend.
 
 ## Features
 
-- Fifteen chart types: bar (vertical / horizontal / grouped / stacked), line,
-  multi-series line, area, stacked area, pie, donut, scatter, radar,
-  histogram, box plot, heatmap
+- Eighteen chart types: bar (vertical / horizontal / grouped / stacked), line,
+  multi-series line, area, stacked area, pie, donut, scatter, bubble, radar,
+  histogram, box plot, heatmap, candlestick, waterfall
 - Nicely rounded ticks on both axes, gridlines, zero-baseline handling for
   negative values (Heckbert "nice numbers")
 - Symmetric ±error bars on bar, line and scatter charts (`errors?`)
+- Smooth Catmull-Rom curves on line and area charts (`smooth=true`)
+- Axis titles on the XY charts (`x_title?` / `y_title?`)
 - Reusable statistics helpers: `mean`, `median`, `quartiles`
 - Micro-benchmarked: a typical chart renders in 12–25 µs (see Performance)
+- Edge-condition tested: empty, single-point, flat and mixed-sign inputs
 - Light / dark themes and custom color palettes
 - Reusable SVG primitives — compose your own shapes
 - Typed, defaulted configuration (no stringly-typed option bags)
@@ -84,6 +87,9 @@ Write the returned string to a `.svg` file, or embed it directly in an HTML page
 | `box_plot` | `Array[(String, Array[Double])]` | quartile boxes, 1.5×IQR whiskers, outlier dots |
 | `area_chart_stacked` | `Array[Double]`, `Array[(String, Array[Double])]` | accumulated area layers + legend |
 | `heatmap` | `Array[String]`, `Array[String]`, `Array[Array[Double]]` | color-scaled matrix cells with value labels |
+| `candlestick_chart` | `Array[(String, Double, Double, Double, Double)]` | OHLC candles, rising/falling colors |
+| `waterfall_chart` | `Array[(String, Double)]` | signed deltas accumulate, connectors + total bar |
+| `bubble_chart` | `Array[(Double, Double, Double)]` | XY dots with area-true size scaling |
 
 `bar_chart`, `line_chart` and `scatter_chart` also accept `errors? : Array[Double]`
 to draw symmetric ±error bars (the value axis widens to fit them).

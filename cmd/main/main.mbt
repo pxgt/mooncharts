@@ -200,6 +200,60 @@ fn main {
       width=520.0,
       height=320.0,
     ),
+    @mooncharts.candlestick_chart(
+      [
+        ("Mon", 102.0, 108.0, 99.0, 106.0),
+        ("Tue", 106.0, 112.0, 104.0, 110.0),
+        ("Wed", 110.0, 111.0, 101.0, 103.0),
+        ("Thu", 103.0, 109.0, 100.0, 108.0),
+        ("Fri", 108.0, 115.0, 107.0, 113.0),
+      ],
+      title="Stock OHLC (candlestick)",
+      width=460.0,
+      height=320.0,
+    ),
+    @mooncharts.waterfall_chart(
+      [
+        ("Revenue", 120.0),
+        ("COGS", -45.0),
+        ("Opex", -30.0),
+        ("Other", 12.0),
+        ("Tax", -14.0),
+      ],
+      total_label="Net",
+      title="Profit Bridge (waterfall)",
+      width=520.0,
+      height=320.0,
+    ),
+    @mooncharts.bubble_chart(
+      [
+        (1.0, 30.0, 10.0),
+        (2.0, 55.0, 45.0),
+        (3.0, 42.0, 22.0),
+        (4.0, 70.0, 80.0),
+        (5.0, 62.0, 35.0),
+        (6.0, 85.0, 60.0),
+      ],
+      title="Impact vs Effort (bubble)",
+      width=460.0,
+      height=320.0,
+    ),
+    @mooncharts.area_chart(
+      [
+        (1.0, 30.0),
+        (2.0, 45.0),
+        (3.0, 38.0),
+        (4.0, 62.0),
+        (5.0, 70.0),
+        (6.0, 85.0),
+      ],
+      smooth=true,
+      x_title="week",
+      y_title="signups",
+      title="Smooth area with axis titles",
+      width=520.0,
+      height=320.0,
+    ),
   ]
   let sb = StringBuilder::new()
   sb.write_string(

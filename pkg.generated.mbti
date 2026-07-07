@@ -2,7 +2,7 @@
 package "Xpeng/mooncharts"
 
 // Values
-pub fn area_chart(Array[(Double, Double)], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+pub fn area_chart(Array[(Double, Double)], smooth? : Bool, x_title? : String, y_title? : String, title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
 pub fn area_chart_stacked(Array[Double], Array[(String, Array[Double])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
@@ -16,6 +16,10 @@ pub fn bar_chart_stacked(Array[String], Array[(String, Array[Double])], title? :
 
 pub fn box_plot(Array[(String, Array[Double])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
+pub fn bubble_chart(Array[(Double, Double, Double)], max_radius? : Double, title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+
+pub fn candlestick_chart(Array[(String, Double, Double, Double, Double)], up_color? : String, down_color? : String, title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+
 pub fn container(String, Array[(String, String)], String) -> String
 
 pub fn document(Double, Double, String) -> String
@@ -28,7 +32,7 @@ pub fn heatmap(Array[String], Array[String], Array[Array[Double]], title? : Stri
 
 pub fn histogram(Array[Double], bins? : Int, title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
-pub fn line_chart(Array[(Double, Double)], errors? : Array[Double], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+pub fn line_chart(Array[(Double, Double)], errors? : Array[Double], smooth? : Bool, x_title? : String, y_title? : String, title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
 pub fn line_chart_multi(Array[(String, Array[(Double, Double)])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
@@ -44,9 +48,11 @@ pub fn quartiles(Array[Double]) -> (Double, Double, Double)
 
 pub fn radar_chart(Array[String], Array[(String, Array[Double])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
-pub fn scatter_chart(Array[(Double, Double)], errors? : Array[Double], title? : String, width? : Double, height? : Double, radius? : Double, theme? : Theme) -> String
+pub fn scatter_chart(Array[(Double, Double)], errors? : Array[Double], x_title? : String, y_title? : String, title? : String, width? : Double, height? : Double, radius? : Double, theme? : Theme) -> String
 
 pub fn text(Double, Double, String, Array[(String, String)]) -> String
+
+pub fn waterfall_chart(Array[(String, Double)], show_total? : Bool, total_label? : String, up_color? : String, down_color? : String, title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
 // Errors
 

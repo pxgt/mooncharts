@@ -53,6 +53,37 @@ pub fn render(
     "stacked" =>
       @mooncharts.bar_chart_stacked(labels, two, theme~, width=w, height=h)
     "radar" => @mooncharts.radar_chart(labels, two, theme~, width=w, height=h)
+    "smoothline" =>
+      @mooncharts.line_chart(xy, smooth=true, theme~, width=w, height=h)
+    "candlestick" => {
+      // Derive OHLC candles from consecutive slider values.
+      let candles : Array[(String, Double, Double, Double, Double)] = []
+      for i in 0..<labels.length() {
+        let v = if i < values.length() { values[i] } else { 0.0 }
+        let prev = if i == 0 || i > values.length() { v } else { values[i - 1] }
+        let hi = if v > prev { v } else { prev }
+        let lo = if v < prev { v } else { prev }
+        candles.push((labels[i], prev, hi + 12.0, lo - 12.0, v))
+      }
+      @mooncharts.candlestick_chart(candles, theme~, width=w, height=h)
+    }
+    "waterfall" => {
+      // Treat slider values as signed deltas around their mean.
+      let m = @mooncharts.mean(values)
+      let deltas : Array[(String, Double)] = []
+      for i in 0..<labels.length() {
+        let v = if i < values.length() { values[i] } else { 0.0 }
+        deltas.push((labels[i], v - m))
+      }
+      @mooncharts.waterfall_chart(deltas, theme~, width=w, height=h)
+    }
+    "bubble" => {
+      let pts : Array[(Double, Double, Double)] = []
+      for i in 0..<values.length() {
+        pts.push((i.to_double(), values[i], values[i]))
+      }
+      @mooncharts.bubble_chart(pts, theme~, width=w, height=h)
+    }
     "hbar" => @mooncharts.bar_chart_horizontal(data, theme~, width=w, height=h)
     "stackedarea" => {
       let sxs : Array[Double] = []
