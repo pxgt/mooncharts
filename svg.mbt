@@ -2,6 +2,48 @@
 // well-formed SVG string, so the rest of the library never hand-writes markup.
 
 ///|
+/// Format a number with an SI suffix: `1_200` -> `"1.2k"`, `3_400_000` ->
+/// `"3.4M"`, `0.0012` -> `"1.2m"`. Values below 1000 (and above 1/1000) keep
+/// their plain `num` form. Handy for compact axis labels and data labels.
+///
+/// # Example
+/// ```mbt check
+/// test {
+///   inspect(@mooncharts.format_si(1200.0), content="1.2k")
+///   inspect(@mooncharts.format_si(3400000.0), content="3.4M")
+///   inspect(@mooncharts.format_si(-52000.0), content="-52k")
+///   inspect(@mooncharts.format_si(42.0), content="42")
+/// }
+/// ```
+pub fn format_si(x : Double) -> String {
+  if x == 0.0 {
+    return "0"
+  }
+  let neg = x < 0.0
+  let mut v = if neg { -x } else { x }
+  let big = ["", "k", "M", "G", "T"]
+  let small = ["", "m", "µ", "n", "p"]
+  let sign = if neg { "-" } else { "" }
+  if v >= 1000.0 {
+    let mut i = 0
+    while v >= 1000.0 && i < big.length() - 1 {
+      v = v / 1000.0
+      i += 1
+    }
+    sign + num(v) + big[i]
+  } else if v < 1.0 {
+    let mut i = 0
+    while v < 1.0 && i < small.length() - 1 {
+      v = v * 1000.0
+      i += 1
+    }
+    sign + num(v) + small[i]
+  } else {
+    sign + num(v)
+  }
+}
+
+///|
 /// Escape the XML special characters in text or attribute content so that the
 /// resulting SVG string stays well-formed.
 pub fn escape(s : String) -> String {
