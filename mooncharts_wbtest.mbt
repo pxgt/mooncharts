@@ -66,6 +66,30 @@ test "lerp_color interpolates hex colors with clamping" {
 }
 
 ///|
+test "squarify preserves area and covers the rectangle" {
+  // Two equal areas over a 200x100 rectangle -> two cells of 10000 each.
+  let rects = squarify([10000.0, 10000.0], 0.0, 0.0, 200.0, 100.0)
+  inspect(rects.length(), content="2")
+  let (_, _, w0, h0) = rects[0]
+  inspect((w0 * h0).to_int(), content="10000")
+  // Total covered area equals the rectangle area.
+  let mut covered = 0.0
+  for r in rects {
+    covered = covered + r.2 * r.3
+  }
+  inspect(covered.to_int(), content="20000")
+}
+
+///|
+test "worst_aspect rewards square-ish rows" {
+  // A single square-ish cell along a matching side is near ratio 1.
+  let a = worst_aspect(100.0, 100.0, 100.0, 10.0)
+  inspect(a, content="1")
+  // A very elongated cell scores worse (> 1).
+  inspect(worst_aspect(100.0, 100.0, 100.0, 2.0) > 1.0, content="true")
+}
+
+///|
 test "nice_ticks guards a degenerate (zero-width) range" {
   let (lo, hi, _) = nice_ticks(5.0, 5.0, 5)
   inspect(
