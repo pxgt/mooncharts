@@ -8,16 +8,18 @@
 pub fn scatter_chart(
   data : Array[(Double, Double)],
   errors? : Array[Double] = [],
+  x_title? : String = "",
+  y_title? : String = "",
   title? : String = "",
   width? : Double = 480.0,
   height? : Double = 320.0,
   radius? : Double = 4.0,
   theme? : Theme = Theme::light(),
 ) -> String {
-  let left = 48.0
+  let left = if y_title == "" { 48.0 } else { 64.0 }
   let right = 16.0
   let top = if title == "" { 16.0 } else { 40.0 }
-  let bottom = 40.0
+  let bottom = if x_title == "" { 40.0 } else { 56.0 }
   let plot_w = width - left - right
   let plot_h = height - top - bottom
   let xs = data.map(fn(p) { p.0 })
@@ -61,6 +63,9 @@ pub fn scatter_chart(
       ]),
     )
   }
+  body.write_string(
+    axis_titles(theme, left, top, plot_w, plot_h, x_title, y_title),
+  )
   if title != "" {
     body.write_string(
       label(width / 2.0, 24.0, title, size=16, weight="bold", fill=theme.title),

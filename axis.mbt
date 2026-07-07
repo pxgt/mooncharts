@@ -41,6 +41,45 @@ fn y_axis(
 }
 
 ///|
+/// Optional axis titles: `x_title` centered below the tick labels, `y_title`
+/// rotated 90° along the left edge. Empty strings render nothing.
+fn axis_titles(
+  theme : Theme,
+  left : Double,
+  top : Double,
+  plot_w : Double,
+  plot_h : Double,
+  x_title : String,
+  y_title : String,
+) -> String {
+  let sb = StringBuilder::new()
+  if x_title != "" {
+    sb.write_string(
+      label(
+        left + plot_w / 2.0,
+        top + plot_h + 34.0,
+        x_title,
+        size=12,
+        fill=theme.axis,
+      ),
+    )
+  }
+  if y_title != "" {
+    let cy = top + plot_h / 2.0
+    sb.write_string(
+      text(14.0, cy, y_title, [
+        ("text-anchor", "middle"),
+        ("font-family", "sans-serif"),
+        ("font-size", "12"),
+        ("fill", theme.axis),
+        ("transform", "rotate(-90 14 " + num(cy) + ")"),
+      ]),
+    )
+  }
+  sb.to_string()
+}
+
+///|
 /// Render x-axis tick labels below the plot area for a horizontal domain
 /// `[axis_lo, axis_hi]`. With `grid=true`, vertical gridlines are drawn too
 /// (used by the horizontal bar chart).

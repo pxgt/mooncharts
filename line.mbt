@@ -4,20 +4,24 @@
 /// Render a line chart connecting a series of `(x, y)` points as a standalone
 /// SVG document string. The value axis auto-fits the data with nicely rounded
 /// gridlines; when all y-values are positive the baseline is anchored at zero.
-/// `errors[i]` (optional) draws a symmetric ±error bar on point `i`. `title`,
-/// `width`, `height` and `theme` are optional.
+/// `errors[i]` (optional) draws a symmetric ±error bar on point `i`; `smooth`
+/// replaces straight segments with a Catmull-Rom curve; `x_title` / `y_title`
+/// add axis captions. `title`, `width`, `height` and `theme` are optional.
 pub fn line_chart(
   data : Array[(Double, Double)],
   errors? : Array[Double] = [],
+  smooth? : Bool = false,
+  x_title? : String = "",
+  y_title? : String = "",
   title? : String = "",
   width? : Double = 480.0,
   height? : Double = 320.0,
   theme? : Theme = Theme::light(),
 ) -> String {
-  let left = 48.0
+  let left = if y_title == "" { 48.0 } else { 64.0 }
   let right = 16.0
   let top = if title == "" { 16.0 } else { 40.0 }
-  let bottom = 40.0
+  let bottom = if x_title == "" { 40.0 } else { 56.0 }
   let plot_w = width - left - right
   let plot_h = height - top - bottom
   let xs = data.map(fn(p) { p.0 })
@@ -41,27 +45,42 @@ pub fn line_chart(
     let pts = StringBuilder::new()
     let px_arr : Array[Double] = []
     let py_arr : Array[Double] = []
+    let coords : Array[(Double, Double)] = []
     for i in 0..<n {
       let (x, y) = data[i]
       let px = scale_linear(x, xlo, xhi, left, left + plot_w)
       let py = scale_linear(y, axis_lo, axis_hi, top + plot_h, top)
       px_arr.push(px)
       py_arr.push(py)
+      coords.push((px, py))
       if i > 0 {
         pts.write_string(" ")
       }
       pts.write_string(num(px) + "," + num(py))
     }
-    body.write_string(
-      elem("polyline", [
-        ("points", pts.to_string()),
-        ("fill", "none"),
-        ("stroke", color),
-        ("stroke-width", "2"),
-        ("stroke-linejoin", "round"),
-        ("stroke-linecap", "round"),
-      ]),
-    )
+    if smooth {
+      body.write_string(
+        elem("path", [
+          ("d", smooth_path(coords)),
+          ("fill", "none"),
+          ("stroke", color),
+          ("stroke-width", "2"),
+          ("stroke-linejoin", "round"),
+          ("stroke-linecap", "round"),
+        ]),
+      )
+    } else {
+      body.write_string(
+        elem("polyline", [
+          ("points", pts.to_string()),
+          ("fill", "none"),
+          ("stroke", color),
+          ("stroke-width", "2"),
+          ("stroke-linejoin", "round"),
+          ("stroke-linecap", "round"),
+        ]),
+      )
+    }
     // Error bars first so the markers sit on top of them.
     for i in 0..<n {
       let e = error_at(errors, i)
@@ -89,6 +108,9 @@ pub fn line_chart(
       )
     }
   }
+  body.write_string(
+    axis_titles(theme, left, top, plot_w, plot_h, x_title, y_title),
+  )
   if title != "" {
     body.write_string(
       label(width / 2.0, 24.0, title, size=16, weight="bold", fill=theme.title),
