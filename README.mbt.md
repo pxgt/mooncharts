@@ -21,17 +21,22 @@ the browser or generate static SVG on the backend.
 
 ## Features
 
-- Eighteen chart types: bar (vertical / horizontal / grouped / stacked), line,
-  multi-series line, area, stacked area, pie, donut, scatter, bubble, radar,
-  histogram, box plot, heatmap, candlestick, waterfall
+- Twenty-four chart types: bar (vertical / horizontal / grouped / stacked),
+  line, multi-series line, area, stacked area, pie, donut, rose, scatter,
+  bubble, radar, histogram, box plot, heatmap, candlestick, waterfall,
+  treemap, funnel, gauge, gantt, sparkline
 - Nicely rounded ticks on both axes, gridlines, zero-baseline handling for
   negative values (Heckbert "nice numbers")
 - Symmetric ±error bars on bar, line and scatter charts (`errors?`)
 - Smooth Catmull-Rom curves on line and area charts (`smooth=true`)
 - Axis titles on the XY charts (`x_title?` / `y_title?`)
-- Reusable statistics helpers: `mean`, `median`, `quartiles`
+- Reusable statistics helpers: `mean`, `median`, `quartiles`; SI number
+  formatting (`format_si`: `1.2k`, `3.4M`)
+- Squarified treemap layout, area-true rose/bubble sizing — real algorithms,
+  unit-tested
 - Micro-benchmarked: a typical chart renders in 12–25 µs (see Performance)
 - Edge-condition tested: empty, single-point, flat and mixed-sign inputs
+- A [runnable cookbook](cookbook.mbt.md) — every recipe is a `moon test` case
 - Light / dark themes and custom color palettes
 - Reusable SVG primitives — compose your own shapes
 - Typed, defaulted configuration (no stringly-typed option bags)
@@ -94,7 +99,8 @@ Write the returned string to a `.svg` file, or embed it directly in an HTML page
 `bar_chart`, `line_chart` and `scatter_chart` also accept `errors? : Array[Double]`
 to draw symmetric ±error bars (the value axis widens to fit them).
 
-Full signatures for every function live in [`docs/api.md`](docs/api.md).
+Full signatures for every function live in [`docs/api.md`](docs/api.md), and
+runnable recipes for every chart in [`cookbook.mbt.md`](cookbook.mbt.md).
 
 ## Performance
 

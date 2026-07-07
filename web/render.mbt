@@ -113,6 +113,44 @@ pub fn render(
         height=h,
       )
     }
+    "treemap" => @mooncharts.treemap(data, theme~, width=w, height=h)
+    "rose" => @mooncharts.rose_chart(data, theme~, width=w, height=h)
+    "funnel" => {
+      // Sort descending so the funnel tapers naturally.
+      let sorted = data.copy()
+      sorted.sort_by(fn(a, b) {
+        if a.1 < b.1 {
+          1
+        } else if a.1 > b.1 {
+          -1
+        } else {
+          0
+        }
+      })
+      @mooncharts.funnel_chart(sorted, theme~, width=w, height=h)
+    }
+    "gauge" =>
+      @mooncharts.gauge_chart(
+        @mooncharts.mean(values),
+        max=300.0,
+        bands=[0.4, 0.35, 0.25],
+        theme~,
+        width=w,
+        height=h,
+      )
+    "gantt" => {
+      let tasks : Array[(String, Double, Double)] = []
+      let mut t = 0.0
+      for i in 0..<labels.length() {
+        let dur = if i < values.length() { values[i] / 40.0 } else { 1.0 }
+        tasks.push((labels[i], t, t + dur))
+        t += dur * 0.6
+      }
+      @mooncharts.gantt_chart(tasks, theme~, width=w, height=h)
+    }
+    "sparkline" =>
+      // Sparklines are tiny; center one at readable size.
+      @mooncharts.sparkline(values, width=360.0, height=90.0, theme~)
     _ => @mooncharts.bar_chart(data, theme~, width=w, height=h)
   }
 }

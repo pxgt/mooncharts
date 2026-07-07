@@ -169,8 +169,8 @@
 
     const groups = {
       basic: ["bar", "hbar", "line", "smoothline", "area", "scatter", "bubble", "pie", "donut"],
-      series: ["multiline", "grouped", "stacked", "stackedarea", "radar"],
-      matrix: ["heatmap", "candlestick", "waterfall"],
+      series: ["multiline", "grouped", "stacked", "stackedarea", "radar", "rose"],
+      matrix: ["heatmap", "candlestick", "waterfall", "treemap", "funnel", "gauge", "gantt", "sparkline"],
     };
     const chart = document.getElementById("chart");
     const tip = document.getElementById("tip");
@@ -287,11 +287,14 @@
     function selectorForKind() {
       if (kind === "pie" || kind === "donut") return "path";
       if (kind === "line" || kind === "area" || kind === "multiline") return 'circle[r="3"]';
-      if (kind === "scatter") return "circle";
+      if (kind === "scatter" || kind === "bubble") return "circle";
+      if (kind === "treemap" || kind === "funnel" || kind === "rose") return null;
       return 'rect[rx="2"]';
     }
     function attachHover() {
-      chart.querySelectorAll(selectorForKind()).forEach((el, i) => {
+      const sel = selectorForKind();
+      if (!sel) return;
+      chart.querySelectorAll(sel).forEach((el, i) => {
         if (i >= labels.length) return;
         el.style.cursor = "pointer";
         el.addEventListener("mousemove", (e) => {

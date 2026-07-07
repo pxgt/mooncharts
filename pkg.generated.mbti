@@ -28,6 +28,14 @@ pub fn elem(String, Array[(String, String)]) -> String
 
 pub fn escape(String) -> String
 
+pub fn format_si(Double) -> String
+
+pub fn funnel_chart(Array[(String, Double)], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+
+pub fn gantt_chart(Array[(String, Double, Double)], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+
+pub fn gauge_chart(Double, min? : Double, max? : Double, bands? : Array[Double], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+
 pub fn heatmap(Array[String], Array[String], Array[Array[Double]], title? : String, width? : Double, height? : Double, low_color? : String, high_color? : String, theme? : Theme) -> String
 
 pub fn histogram(Array[Double], bins? : Int, title? : String, width? : Double, height? : Double, theme? : Theme) -> String
@@ -48,9 +56,15 @@ pub fn quartiles(Array[Double]) -> (Double, Double, Double)
 
 pub fn radar_chart(Array[String], Array[(String, Array[Double])], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
+pub fn rose_chart(Array[(String, Double)], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
+
 pub fn scatter_chart(Array[(Double, Double)], errors? : Array[Double], x_title? : String, y_title? : String, title? : String, width? : Double, height? : Double, radius? : Double, theme? : Theme) -> String
 
+pub fn sparkline(Array[Double], width? : Double, height? : Double, dot? : Bool, theme? : Theme) -> String
+
 pub fn text(Double, Double, String, Array[(String, String)]) -> String
+
+pub fn treemap(Array[(String, Double)], title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 
 pub fn waterfall_chart(Array[(String, Double)], show_total? : Bool, total_label? : String, up_color? : String, down_color? : String, title? : String, width? : Double, height? : Double, theme? : Theme) -> String
 

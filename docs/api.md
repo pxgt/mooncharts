@@ -52,6 +52,18 @@ anchors at zero when all values are positive.
 | `heatmap(rows, cols, values, low_color?, high_color?)` | `values : Array[Array[Double]]` | cells colored by linear interpolation between the two scale colors |
 | `candlestick_chart(data, up_color?, down_color?)` | `Array[(String, Double, Double, Double, Double)]` | `(label, open, high, low, close)`; wick spans low..high |
 | `waterfall_chart(data, show_total?, total_label?, up_color?, down_color?)` | `Array[(String, Double)]` | signed deltas float at the running total with dashed connectors |
+| `treemap(data)` | `Array[(String, Double)]` | squarified layout; cell area ∝ value |
+| `funnel_chart(data)` | `Array[(String, Double)]` | tapering stages with conversion % vs the first |
+| `rose_chart(data)` | `Array[(String, Double)]` | Nightingale polar-area sectors (radius ∝ √value) |
+| `gauge_chart(value, min?, max?, bands?)` | `bands? : Array[Double]` | 180° needle gauge with colored zones |
+| `gantt_chart(tasks)` | `Array[(String, Double, Double)]` | `(name, start, end)` bars on a shared time axis |
+| `sparkline(values, dot?)` | `Array[Double]` | tiny axis-less inline trend line |
+
+### Number formatting
+
+| Function | Returns | Notes |
+|----------|---------|-------|
+| `format_si(x)` | `String` | SI suffixes: `1200 -> "1.2k"`, `3.4e6 -> "3.4M"`, `0.05 -> "50m"` |
 
 ## Theming
 

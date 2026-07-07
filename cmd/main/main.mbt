@@ -254,6 +254,63 @@ fn main {
       width=520.0,
       height=320.0,
     ),
+    @mooncharts.treemap(
+      [
+        ("Compute", 42.0),
+        ("Storage", 26.0),
+        ("Network", 18.0),
+        ("Support", 9.0),
+        ("Other", 5.0),
+      ],
+      title="Cloud Spend (treemap)",
+      width=460.0,
+      height=320.0,
+    ),
+    @mooncharts.gauge_chart(
+      72.0,
+      max=100.0,
+      bands=[0.5, 0.3, 0.2],
+      title="CPU Utilization %",
+      width=320.0,
+      height=220.0,
+    ),
+    @mooncharts.funnel_chart(
+      [
+        ("Visits", 1000.0),
+        ("Signups", 420.0),
+        ("Trials", 180.0),
+        ("Paid", 70.0),
+      ],
+      title="Conversion Funnel",
+      width=440.0,
+      height=320.0,
+    ),
+    @mooncharts.rose_chart(
+      [
+        ("Mon", 12.0),
+        ("Tue", 19.0),
+        ("Wed", 15.0),
+        ("Thu", 25.0),
+        ("Fri", 30.0),
+        ("Sat", 8.0),
+        ("Sun", 6.0),
+      ],
+      title="Activity by Day (rose)",
+      width=420.0,
+      height=360.0,
+    ),
+    @mooncharts.gantt_chart(
+      [
+        ("Research", 0.0, 3.0),
+        ("Design", 2.0, 6.0),
+        ("Build", 5.0, 12.0),
+        ("Test", 11.0, 15.0),
+        ("Launch", 15.0, 17.0),
+      ],
+      title="Project Timeline (Gantt)",
+      width=560.0,
+      height=300.0,
+    ),
   ]
   let sb = StringBuilder::new()
   sb.write_string(
