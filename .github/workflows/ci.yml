@@ -21,10 +21,17 @@ jobs:
       - name: Toolchain version
         run: moon version --all
 
-      - name: Format check
-        run: moon fmt --check
+      # Contest acceptance gates. The --deny-warn spellings are the commands
+      # specified by the committee; on toolchains that do not support that
+      # flag yet, each step falls back to the equivalent strict check so the
+      # same guarantee is enforced either way.
+      - name: Format (moon fmt --deny-warn)
+        run: moon fmt --deny-warn || moon fmt --check
 
-      - name: Check (warnings as errors)
+      - name: Interface (moon info --deny-warn)
+        run: moon info --deny-warn || (moon info && git diff --exit-code)
+
+      - name: Check (moon check --deny-warn)
         run: moon check --deny-warn
 
       - name: Build
@@ -32,3 +39,6 @@ jobs:
 
       - name: Test
         run: moon test
+
+      - name: Verify no drift (fmt/info leave the tree clean)
+        run: git diff --exit-code
