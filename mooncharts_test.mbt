@@ -199,6 +199,54 @@ test "error bars widen the axis and draw stem plus caps" {
 }
 
 ///|
+test "candlestick colors rising and falling candles differently" {
+  let svg = @mooncharts.candlestick_chart([
+    ("d1", 10.0, 15.0, 9.0, 14.0), // rising
+    ("d2", 14.0, 16.0, 11.0, 12.0), // falling
+  ])
+  inspect(svg.contains("#59a14f"), content="true")
+  inspect(svg.contains("#e15759"), content="true")
+  // Wick spans the low..high range, so the axis reaches 16.
+  inspect(svg.contains(">16<"), content="true")
+}
+
+///|
+test "waterfall accumulates deltas and appends a total bar" {
+  let svg = @mooncharts.waterfall_chart([
+    ("start", 50.0),
+    ("down", -20.0),
+    ("up", 10.0),
+  ])
+  inspect(svg.contains("Total"), content="true")
+  inspect(svg.contains("stroke-dasharray"), content="true")
+  // Both gain and loss colors appear.
+  inspect(svg.contains("#59a14f"), content="true")
+  inspect(svg.contains("#e15759"), content="true")
+}
+
+///|
+test "smooth lines render cubic Bezier paths instead of polylines" {
+  let data : Array[(Double, Double)] = [(0.0, 1.0), (1.0, 3.0), (2.0, 2.0)]
+  let sharp = @mooncharts.line_chart(data)
+  let smooth = @mooncharts.line_chart(data, smooth=true)
+  inspect(sharp.contains("<polyline"), content="true")
+  inspect(smooth.contains("<polyline"), content="false")
+  inspect(smooth.contains(" C "), content="true")
+}
+
+///|
+test "axis titles render horizontally and rotated" {
+  let svg = @mooncharts.scatter_chart(
+    [(1.0, 2.0), (3.0, 4.0)],
+    x_title="hours",
+    y_title="score",
+  )
+  inspect(svg.contains("hours"), content="true")
+  inspect(svg.contains("rotate(-90"), content="true")
+  inspect(svg.contains("score"), content="true")
+}
+
+///|
 test "quartiles handle even, odd and tiny inputs" {
   // Even count: halves split cleanly.
   let (q1, m, q3) = @mooncharts.quartiles([
